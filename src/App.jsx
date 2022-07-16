@@ -7,6 +7,7 @@ function App() {
     <Switch>
       <Route exact path="/" component={ pages.Login } />
       <Route exact path="/stock/list" component={ pages.StockList } />
+      <Route exact path="*" component={ pages.NotFound } />
     </Switch>
   );
 }
