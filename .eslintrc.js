@@ -19,5 +19,6 @@ module.exports = {
   ],
   rules: {
     'react/jsx-curly-spacing': [2, 'always'],
+    'react/jsx-filename-extension': [0],
   },
 };
