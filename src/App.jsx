@@ -5,8 +5,10 @@ import pages from './pages';
 function App() {
   return (
     <Switch>
-      <Route exact path="/" component={ pages.Login } />
-      <Route exact path="/stock/list" component={ pages.StockList } />
+      <Route exact path="/login" component={ pages.Login } />
+      <Route exact path="/acoes" component={ pages.StockList } />
+      <Route exact path="/acoes/transacoes" component={ pages.StockBuyOrSale } />
+      <Route exact path="/acoes/deposito/retirada" component={ pages.DepositOrWithdraw } />
       <Route exact path="*" component={ pages.NotFound } />
     </Switch>
   );
