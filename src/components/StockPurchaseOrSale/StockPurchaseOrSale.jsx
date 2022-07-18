@@ -1,10 +1,14 @@
 import React, { useContext } from 'react';
 import stockContext from '../../context/stockContext';
 import tableInfo from '../../data/tableHeader';
-import stocksToInvest from '../../data/stocksToInvest';
+import allStocks from '../../data/allStocks';
+// import ShortStockMenu from '../ShortStockMenu/ShortStockMenu';
 
-export default function StockBuyOrSale() {
-  const { stockId } = useContext(stockContext);
+export default function StockPurchaseOrSale() {
+  const {
+    stockInfo,
+  } = useContext(stockContext);
+
   return (
     <>
       <table>
@@ -21,8 +25,8 @@ export default function StockBuyOrSale() {
         </thead>
         <tbody>
           {
-              stocksToInvest.filter((stock) => (
-                stock.id === stockId
+              allStocks.filter((stock) => (
+                stock.id === stockInfo.id
               )).map((el) => (
                 <tr key={ el.id }>
                   <td>{ el.name }</td>
@@ -34,23 +38,17 @@ export default function StockBuyOrSale() {
                     >
                       C
                     </button>
-                    <button type="button">V</button>
+                    <button
+                      type="button"
+                    >
+                      V
+                    </button>
                   </td>
                 </tr>
               ))
             }
         </tbody>
       </table>
-      <div>
-        <div>
-          <button type="button">Comprar</button>
-          <input type="text" placeholder="Informe o valor" />
-        </div>
-        <div>
-          <button type="button">Vender</button>
-          <input type="text" placeholder="Informe o valor" />
-        </div>
-      </div>
       <div>
         <button type="button">Confirmar</button>
       </div>
