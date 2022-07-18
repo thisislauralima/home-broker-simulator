@@ -1,0 +1,37 @@
+section {
+  background-color: rgb(56,52,54);
+  height: 500px;
+}
+
+#wrapper-container {
+  margin-top: 50px;
+  padding: 10px;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+}
+
+
+.saleOrPurchaseBtn {
+  border: none;
+  background-color: rgb(56,52,54);
+  color: white;
+  font-size: 1em;
+  font-weight: 800;
+}
+
+input {
+  background-color: rgb(41,39,41);
+  border: none;
+  padding: 10px;
+  color: white;
+  width: 300px;
+  font-size: 1em;
+  align-text: center;
+}
+
+.label-input {
+  display: block;
+}
