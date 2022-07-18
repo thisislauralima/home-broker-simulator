@@ -1,0 +1,44 @@
+td {
+  background-color: rgb(255,254,255);
+  width: 250px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+#stock-container {
+  display: flex;
+}
+
+.stock {
+  background-color: rgb(255,254,255);
+  margin: 5px 0;
+  padding: 10px;
+  width: 200px;
+  list-style-type: none;
+}
+
+#stock-img {
+  width: 35px;
+  height: 35px;
+}
+
+.invest-btn { 
+  background-color: rgb(246,247,250);
+  border: none;
+  color: rgb(70,71,74);
+  cursor: pointer;
+  border-radius: 10px;
+}
+  
+#btns-home-broker {
+  display: flex;
+  justify-content: center;
+}
+
+#pur-btn {
+  background-color: rgb(246,247,250)
+}
+
+#sale-btn {
+  background-color: rgb(246,247,250)
+}
