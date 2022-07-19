@@ -1,4 +1,4 @@
-.t-headers {
-  width: 250px;
-  cursor: pointer;
+#header-table {
+  table-layout: fixed;
+  width: 900px;
 }

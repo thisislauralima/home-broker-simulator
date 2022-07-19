@@ -4,8 +4,8 @@ import './stocksToInvestHeader.css';
 
 export default function StocksToInvestHeader() {
   return (
-    <table>
-      <caption id="stocks-list-caption">Ações para investir:</caption>
+    <table id="header-table">
+      <caption>Ações para investir:</caption>
       <thead>
         <tr>
           {
