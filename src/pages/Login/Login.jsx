@@ -5,7 +5,7 @@ import { PASSWORD_MIN_LENGTH, EMAIL_REGEX } from '../../utils/constants';
 import stockContext from '../../context/stockContext';
 
 export default function Login() {
-  const { userInfo, setUserInfo, setIsUserLoggedIn } = useContext(stockContext);
+  const { userInfo, setUserInfo, setUserEmail } = useContext(stockContext);
 
   const history = useHistory();
 
@@ -33,7 +33,8 @@ export default function Login() {
       lastAcess: new Date(),
     }));
 
-    setIsUserLoggedIn(true);
+    localStorage.setItem('isUserLoggedIn', true);
+    // setIsUserLoggedIn(true);
 
     history.push('/acoes');
   };
@@ -45,9 +46,12 @@ export default function Login() {
           ...prevState,
           lastAcess: new Date(),
         }));
+        const data = localStorage.getItem('userInfo');
+        setUserEmail(JSON.parse(data).email);
         history.push('/acoes');
 
-        setIsUserLoggedIn(true);
+        localStorage.setItem('isUserLoggedIn', true);
+        // setIsUserLoggedIn(true);
       } else {
         setIsAlertDisplayed(true);
       }

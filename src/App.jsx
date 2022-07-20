@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import pages from './pages';
-import OrdinaryActivities from './OrdinaryActivities';
 
 function App() {
   const [renderLogin, setRenderLogin] = useState(false);
+
+  if (!localStorage.getItem('isUserLoggedIn')) {
+    <Redirect to="/login" />;
+  }
 
   useEffect(() => {
     setRenderLogin(true);
@@ -20,13 +23,10 @@ function App() {
           renderLogin && <Redirect to="/login" />
         ) }
       />
-      {/* <Route exact path="/acoes" component={ pages.StockList } />
+      <Route exact path="/acoes" component={ pages.StockList } />
       <Route exact path="acoes/cliente" component={ pages.PersonalStocks } />
       <Route exact path="/acoes/deposito/retirada" component={ pages.DepositOrWithdraw } />
-      <Route exact path="*" component={ pages.NotFound } /> */}
-      {
-        OrdinaryActivities()
-      }
+      <Route exact path="*" component={ pages.NotFound } />
     </Switch>
   );
 }
