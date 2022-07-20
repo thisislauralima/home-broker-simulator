@@ -5,8 +5,10 @@ import { PASSWORD_MIN_LENGTH, EMAIL_REGEX } from '../../utils/constants';
 import stockContext from '../../context/stockContext';
 
 export default function Login() {
-  const { userInfo, setUserInfo } = useContext(stockContext);
+  const { userInfo, setUserInfo, setIsUserLoggedIn } = useContext(stockContext);
+
   const history = useHistory();
+
   const [isBtnDisabled, setIsBtnDisabled] = useState(true);
   const [isAlertDisplayed, setIsAlertDisplayed] = useState(false);
 
@@ -21,11 +23,17 @@ export default function Login() {
     }
   }, [setIsBtnDisabled, userInfo.email, userInfo.password]);
 
+  useEffect(() => {
+    localStorage.setItem('userInfo', JSON.stringify(userInfo));
+  }, [userInfo, userInfo.lastAcess]);
+
   const goToStockListPage = () => {
     setUserInfo((prevState) => ({
       ...prevState,
       lastAcess: new Date(),
     }));
+
+    setIsUserLoggedIn(true);
 
     history.push('/acoes');
   };
@@ -33,7 +41,13 @@ export default function Login() {
   const sendFormInfo = (e) => {
     if (e.key === 'Enter') {
       if (isEmailCorrect && checkPassword) {
+        setUserInfo((prevState) => ({
+          ...prevState,
+          lastAcess: new Date(),
+        }));
         history.push('/acoes');
+
+        setIsUserLoggedIn(true);
       } else {
         setIsAlertDisplayed(true);
       }
@@ -59,6 +73,7 @@ export default function Login() {
           onChange={ ({ target: { value } }) => setUserInfo((prevState) => ({
             ...prevState,
             email: value,
+            lastAcess: new Date(),
           })) }
           onKeyUp={ (e) => sendFormInfo(e) }
           type="text"
@@ -74,6 +89,7 @@ export default function Login() {
           onChange={ ({ target: { value } }) => setUserInfo((prevState) => ({
             ...prevState,
             password: value,
+            lastAcess: new Date(),
           })) }
         />
       </label>
