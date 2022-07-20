@@ -4,12 +4,18 @@ import stockContext from './stockContext';
 
 export default function StocksProvider({ children }) {
   const [stockInfo, setStockInfo] = useState([]);
-  const [iseUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   const [userId, setUserId] = useState('');
   const [purchasedStockSale, setPurchasedStockSale] = useState(0);
   const [userInfo, setUserInfo] = useState({
-    email: '', password: 0, lastAcess: '',
+    email: '', password: '', lastAcess: '',
   });
+  const [accountBalance, setAccountBalance] = useState(1264.21);
+  const [isStockMenuRendered, setIsStockMenuRendered] = useState(false);
+  const [btnColor, setBtnColor] = useState('');
+  const [stocksCode, setStockCode] = useState([]);
+  const [userEmail, setUserEmail] = useState('');
+  const [isStocksCodeRenderedProvider, setIsStocksCodeRenderedProvider] = useState(false);
 
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const values = {
@@ -21,8 +27,20 @@ export default function StocksProvider({ children }) {
     setPurchasedStockSale,
     userInfo,
     setUserInfo,
-    iseUserLoggedIn,
+    isUserLoggedIn,
     setIsUserLoggedIn,
+    accountBalance,
+    setAccountBalance,
+    isStockMenuRendered,
+    setIsStockMenuRendered,
+    btnColor,
+    setBtnColor,
+    stocksCode,
+    setStockCode,
+    userEmail,
+    setUserEmail,
+    isStocksCodeRenderedProvider,
+    setIsStocksCodeRenderedProvider,
   };
 
   return (

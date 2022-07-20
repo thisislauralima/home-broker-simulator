@@ -17,6 +17,8 @@ export default function NegotiatedStocksMenu() {
     setBtnColor,
     isStockMenuRendered,
     setIsStockMenuRendered,
+    isStocksCodeRenderedProvider,
+    setIsStocksCodeRenderedProvider,
   } = useContext(stockContext);
 
   const stockFinalPrice = ({ target: { value } }) => {
@@ -45,6 +47,7 @@ export default function NegotiatedStocksMenu() {
   };
 
   const renderStocksCode = () => {
+    setIsStocksCodeRenderedProvider(true);
     setIsStocksCodeRendered(true);
   };
 
@@ -81,7 +84,8 @@ export default function NegotiatedStocksMenu() {
             Ativo
             <input onClick={ renderStocksCode } className={ `${btnColor} short-menu-input` } />
             {
-              isStocksCodeRendered && <StockListToNegotiate />
+              isStocksCodeRenderedProvider
+              && isStocksCodeRendered && isStocksCodeRendered && <StockListToNegotiate />
             }
           </div>
           <label className="input-label-short-menu" htmlFor="shortMenuInput-2">
@@ -90,13 +94,12 @@ export default function NegotiatedStocksMenu() {
               className={ `${btnColor} short-menu-input` }
               min="0"
               type="number"
-              onChange={ stockFinalPrice }
+              onClick={ stockFinalPrice }
             />
           </label>
           <label htmlFor="shortMenuInput-3">
             Preço
             <input
-              step=".01"
               className={ `${btnColor} short-menu-input` }
               min="0"
               type="number"
