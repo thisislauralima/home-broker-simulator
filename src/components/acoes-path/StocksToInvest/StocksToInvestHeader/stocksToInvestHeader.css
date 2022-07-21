@@ -1,0 +1,22 @@
+#header-table {
+  display: table;
+  table-layout: fixed;
+}
+
+#main-table-header {
+  width: 600px;
+}
+
+#main-table-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#main-table-x-btn {
+  border: none;
+  background-color: rgb(11, 14, 23);
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+}
