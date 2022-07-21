@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import allStocks from '../../../data/allStocks';
-import stockContext from '../../../context/stockContext';
+import allStocks from '../../../../../../data/allStocks';
+import stockContext from '../../../../../../context/stockContext';
 
 export default function StockListToNegotiate() {
   const {
