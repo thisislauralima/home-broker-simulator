@@ -22,6 +22,7 @@ export default function StockListToNegotiate() {
   };
 
   const saveStockInfo = ({ target: { value } }) => {
+    setStockCode([]);
     setStockFinalPriceDecimal(0);
     const code = allStocks.filter((el) => el.stockCode === value);
     setStockInfo(code);
