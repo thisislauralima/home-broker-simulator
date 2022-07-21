@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import stockContext from '../../../../../context/stockContext';
 import StockListToNegotiate from './StockListToNegotiate/StockListToNegotiate';
 import allStocks from '../../../../../data/allStocks';
-import RightSideStockMenuForm from '../RightSideStockMenuForm/RigthSideStockMenuForm';
+import RightSideStockMenuForm from '../RightSideStockMenuForm/RightSideStockMenuForm';
 import './leftSideStockMenuForm.css';
 
 export default function LeftSideStockMenuForm() {
