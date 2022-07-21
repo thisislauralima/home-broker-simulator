@@ -1,0 +1,13 @@
+#send-order-btn-div {
+  display: flex;
+  margin-top: 25px;
+  justify-content: center;
+}
+
+#send-order-btn {
+  background-color: rgb(250,166,27);
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  font-weight: 800;
+}
