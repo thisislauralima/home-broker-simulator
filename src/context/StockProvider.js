@@ -20,6 +20,10 @@ export default function StocksProvider({ children }) {
   });
   const [userEmail, setUserEmail] = useState('');
   const [paidPriceForStock, setPaidPriceForStock] = useState(0);
+  const [restartStockMenuInputs, setRestartStockMenuInputs] = useState({
+    quantity: undefined,
+    price: undefined,
+  });
 
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const values = {
@@ -38,6 +42,7 @@ export default function StocksProvider({ children }) {
     userInfo,
     userEmail,
     paidPriceForStock,
+    restartStockMenuInputs,
     setAccountBalance,
     setBtnColor,
     setIsPriceAndQuantityMissing,
@@ -53,6 +58,7 @@ export default function StocksProvider({ children }) {
     setUserInfo,
     setUserEmail,
     setPaidPriceForStock,
+    setRestartStockMenuInputs,
   };
 
   return (

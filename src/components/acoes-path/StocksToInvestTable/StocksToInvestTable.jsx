@@ -8,7 +8,7 @@ export default function StocksToInvest() {
   const {
     setStockInfo,
     setIsStockMenuRendered,
-    // btnColor,
+    setRestartStockMenuInputs,
     setStockFinalPriceDecimal,
     setBtnColor,
   } = useContext(stockContext);
@@ -21,6 +21,7 @@ export default function StocksToInvest() {
     }
   };
   const saveStocksInfo = (e, id) => {
+    setRestartStockMenuInputs({ price: 0, quantity: 0 });
     setStockFinalPriceDecimal(0.00);
     paintBtns(e);
     const infos = allStocks.filter((stock) => stock.id === id).map((el) => el);

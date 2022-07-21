@@ -16,6 +16,8 @@ export default function LeftSideStockMenuForm() {
     setStockQuantity,
     setStockFinalPriceDecimal,
     setPaidPriceForStock,
+    setRestartStockMenuInputs,
+    restartStockMenuInputs,
   } = useContext(stockContext);
 
   const renderStocksCode = () => {
@@ -23,6 +25,7 @@ export default function LeftSideStockMenuForm() {
   };
 
   const stockFinalPrice = ({ target: { value } }) => {
+    setRestartStockMenuInputs({ quantity: null });
     setStockCode([]);
     const stockPrice = allStocks.filter(
       (stock) => stock.id === stockInfo[0].id,
@@ -34,6 +37,7 @@ export default function LeftSideStockMenuForm() {
   };
 
   const savePaidPrice = ({ target: { value } }) => {
+    setRestartStockMenuInputs({ price: null });
     setPaidPriceForStock(value);
   };
 
@@ -47,25 +51,28 @@ export default function LeftSideStockMenuForm() {
               isStocksCodeRendered && <StockListToNegotiate />
             }
         </div>
-        <label className="input-label-short-menu" htmlFor="shortMenuInput-2">
+        <div className="input-div-short-menu" htmlFor="shortMenuInput-2">
           Quantidade
           <input
+            value={ restartStockMenuInputs.quantity }
             onClick={ stockFinalPrice }
             className={ `${btnColor} short-menu-input` }
             min="0"
+            max="100"
             type="number"
           />
-        </label>
-        <label htmlFor="shortMenuInput-3">
+        </div>
+        <div htmlFor="shortMenuInput-3">
           Preço
           <input
-            step="0.1"
+            value={ restartStockMenuInputs.price }
+            step=".01"
             onClick={ savePaidPrice }
             className={ `${btnColor} short-menu-input` }
             min="0"
             type="number"
           />
-        </label>
+        </div>
       </div>
       <RightSideStockMenuForm />
     </form>
