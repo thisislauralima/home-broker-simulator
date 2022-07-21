@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import stockContext from '../../../context/stockContext';
+import stockContext from '../../../../context/stockContext';
 
 export default function EndPurchaseOrSale() {
   const {
