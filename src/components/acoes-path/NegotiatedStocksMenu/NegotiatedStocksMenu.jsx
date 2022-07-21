@@ -9,7 +9,6 @@ import EndPurchaseOrSale from '../EndPurchaseOrSale/EndPurchaseOrSale';
 
 export default function NegotiatedStocksMenu() {
   const [isStocksCodeRendered, setIsStocksCodeRendered] = useState(false);
-  const [isIsPurchaseOrSaleDone, setIsPurchaseOrSaleDone] = useState(false);
 
   const {
     stockInfo,
@@ -22,6 +21,13 @@ export default function NegotiatedStocksMenu() {
     isStocksCodeRenderedProvider,
     setIsStocksCodeRenderedProvider,
     setStockCode,
+    setStockQuantity,
+    setPaidPriceForStock,
+    setIsPriceAndQuantityMissing,
+    paidPriceForStock,
+    IsPurchaseOrSaleDone,
+    setIsPurchaseOrSaleDone,
+    isPriceAndQuantityMissing,
   } = useContext(stockContext);
 
   const stockFinalPrice = ({ target: { value } }) => {
@@ -31,6 +37,7 @@ export default function NegotiatedStocksMenu() {
     ).map(({ price }) => price);
 
     const finalStockPrice = stockPrice * Number(value);
+    setStockQuantity(Number(value));
     setPurchasedStockSale(finalStockPrice.toFixed(2));
   };
 
@@ -63,7 +70,16 @@ export default function NegotiatedStocksMenu() {
   };
 
   const endOperation = () => {
-    setIsPurchaseOrSaleDone(true);
+    if (!purchasedStockSale || !paidPriceForStock) {
+      setIsPriceAndQuantityMissing(true);
+      setIsPurchaseOrSaleDone(true);
+    } else {
+      setIsPurchaseOrSaleDone(true);
+    }
+  };
+
+  const savePaidPrice = ({ target: { value } }) => {
+    setPaidPriceForStock(value);
   };
 
   return (
@@ -75,7 +91,7 @@ export default function NegotiatedStocksMenu() {
       tabIndex={ 0 }
     >
       {
-        isIsPurchaseOrSaleDone && <EndPurchaseOrSale />
+        !isPriceAndQuantityMissing && IsPurchaseOrSaleDone && <EndPurchaseOrSale />
       }
       {/* <div id="wrapper-container"> */}
       <header id="header-stock-section">
@@ -115,15 +131,17 @@ export default function NegotiatedStocksMenu() {
           <label className="input-label-short-menu" htmlFor="shortMenuInput-2">
             Quantidade
             <input
+              onClick={ stockFinalPrice }
               className={ `${btnColor} short-menu-input` }
               min="0"
               type="number"
-              onClick={ stockFinalPrice }
             />
           </label>
           <label htmlFor="shortMenuInput-3">
             Preço
             <input
+              step="any"
+              onClick={ savePaidPrice }
               className={ `${btnColor} short-menu-input` }
               min="0"
               type="number"
@@ -133,12 +151,12 @@ export default function NegotiatedStocksMenu() {
         {/* -------------------------------------------------- */}
         <div>
           {
-              stockInfo.length && stockInfo.map((el) => <div key={ el.id }>{el.name}</div>)
+            stockInfo.length && stockInfo.map((el) => <div key={ el.id }>{el.name}</div>)
           }
           {
-              stockInfo.length && allStocks.filter(
-                (stock) => stock.id === stockInfo[0].id,
-              ).map(({ price }) => <div key={ price }>{ price }</div>)
+            stockInfo.length && allStocks.filter(
+              (stock) => stock.id === stockInfo[0].id,
+            ).map(({ price }) => <div key={ price }>{ price }</div>)
           }
           <div>{ `Total: ${purchasedStockSale}` }</div>
         </div>

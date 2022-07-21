@@ -16,6 +16,7 @@ export default function StocksProvider({ children }) {
   const [stocksCode, setStockCode] = useState([]);
   const [userEmail, setUserEmail] = useState('');
   const [isStocksCodeRenderedProvider, setIsStocksCodeRenderedProvider] = useState(false);
+  const [stockQuantity, setStockQuantity] = useState(0);
 
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const values = {
@@ -41,6 +42,8 @@ export default function StocksProvider({ children }) {
     setUserEmail,
     isStocksCodeRenderedProvider,
     setIsStocksCodeRenderedProvider,
+    stockQuantity,
+    setStockQuantity,
   };
 
   return (
