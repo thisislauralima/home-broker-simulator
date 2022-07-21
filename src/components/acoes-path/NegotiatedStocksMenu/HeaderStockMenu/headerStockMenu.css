@@ -1,0 +1,34 @@
+#header-stock-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.goGreen {
+  background-color: rgb(71,197,132);
+}
+
+.goYellow {
+  background-color: rgb(241,149,4);
+}
+
+.saleOrPurchaseBtn {
+  min-width: 100px;
+  font-size: 1em;
+  border: none;
+  margin-left: 10px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 6px;
+  font-weight: 800;
+  color: rgb(94,46,0);
+  cursor: pointer;
+}
+
+#close-short-menu {
+  background-color: rgb(29,31,47);
+  color: rgb(187,189,206);
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
