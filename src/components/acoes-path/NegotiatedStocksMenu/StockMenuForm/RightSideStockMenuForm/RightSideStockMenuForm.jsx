@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import stockContext from '../../../../../context/stockContext';
 import allStocks from '../../../../../data/allStocks';
 
-export default function RigthSideStockMenuForm() {
+export default function RightSideStockMenuForm() {
   const {
     stockInfo,
     stockFinalPriceDecimal,
