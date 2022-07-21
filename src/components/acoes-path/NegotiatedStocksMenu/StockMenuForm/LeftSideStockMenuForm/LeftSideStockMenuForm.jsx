@@ -25,7 +25,7 @@ export default function LeftSideStockMenuForm() {
   };
 
   const stockFinalPrice = ({ target: { value } }) => {
-    setRestartStockMenuInputs({ quantity: null });
+    setRestartStockMenuInputs({ quantity: undefined });
     setStockCode([]);
     const stockPrice = allStocks.filter(
       (stock) => stock.id === stockInfo[0].id,
@@ -37,7 +37,7 @@ export default function LeftSideStockMenuForm() {
   };
 
   const savePaidPrice = ({ target: { value } }) => {
-    setRestartStockMenuInputs({ price: null });
+    setRestartStockMenuInputs({ price: undefined });
     setPaidPriceForStock(value);
   };
 
