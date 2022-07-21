@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import stockContext from '../../../context/stockContext';
 import './negotiatedStocksMenu.css';
@@ -8,8 +8,6 @@ import StockListToNegotiate from '../StockListToNegotiate/StockListToNegotiate';
 import EndPurchaseOrSale from '../EndPurchaseOrSale/EndPurchaseOrSale';
 
 export default function NegotiatedStocksMenu() {
-  const [isStocksCodeRendered, setIsStocksCodeRendered] = useState(false);
-
   const {
     stockInfo,
     stockFinalPriceDecimal,
@@ -18,8 +16,6 @@ export default function NegotiatedStocksMenu() {
     setBtnColor,
     isStockMenuRendered,
     setIsStockMenuRendered,
-    isStocksCodeRenderedProvider,
-    setIsStocksCodeRenderedProvider,
     setStockCode,
     setStockQuantity,
     setPaidPriceForStock,
@@ -28,6 +24,8 @@ export default function NegotiatedStocksMenu() {
     IsPurchaseOrSaleDone,
     setIsPurchaseOrSaleDone,
     isPriceAndQuantityMissing,
+    setIsStocksCodeRendered,
+    isStocksCodeRendered,
   } = useContext(stockContext);
 
   const stockFinalPrice = ({ target: { value } }) => {
@@ -58,13 +56,11 @@ export default function NegotiatedStocksMenu() {
   };
 
   const renderStocksCode = () => {
-    setIsStocksCodeRenderedProvider(true);
     setIsStocksCodeRendered(true);
   };
 
   const closeStocksCodeList = (e) => {
     if (e.key === 'Escape') {
-      setIsStocksCodeRenderedProvider(false);
       setIsStocksCodeRendered(false);
     }
   };
@@ -124,8 +120,7 @@ export default function NegotiatedStocksMenu() {
             Ativo
             <input onClick={ renderStocksCode } className={ `${btnColor} short-menu-input` } />
             {
-              isStocksCodeRenderedProvider
-              && isStocksCodeRendered && <StockListToNegotiate />
+              isStocksCodeRendered && <StockListToNegotiate />
             }
           </div>
           <label className="input-label-short-menu" htmlFor="shortMenuInput-2">

@@ -7,8 +7,8 @@ export default function StocksProvider({ children }) {
   const [btnColor, setBtnColor] = useState('');
   const [isPriceAndQuantityMissing, setIsPriceAndQuantityMissing] = useState(true);
   const [isPurchaseOrSaleDone, setIsPurchaseOrSaleDone] = useState(false);
-  const [isStocksCodeRenderedProvider, setIsStocksCodeRenderedProvider] = useState(false);
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const [isStocksCodeRendered, setIsStocksCodeRendered] = useState(false);
   const [isStockMenuRendered, setIsStockMenuRendered] = useState(false);
   const [stocksCode, setStockCode] = useState([]);
   const [stockInfo, setStockInfo] = useState([]);
@@ -27,8 +27,8 @@ export default function StocksProvider({ children }) {
     btnColor,
     isPriceAndQuantityMissing,
     isPurchaseOrSaleDone,
-    isStocksCodeRenderedProvider,
     isUserLoggedIn,
+    isStocksCodeRendered,
     isStockMenuRendered,
     stocksCode,
     stockInfo,
@@ -42,8 +42,8 @@ export default function StocksProvider({ children }) {
     setBtnColor,
     setIsPriceAndQuantityMissing,
     setIsPurchaseOrSaleDone,
-    setIsStocksCodeRenderedProvider,
     setIsUserLoggedIn,
+    setIsStocksCodeRendered,
     setIsStockMenuRendered,
     setStockCode,
     setStockInfo,

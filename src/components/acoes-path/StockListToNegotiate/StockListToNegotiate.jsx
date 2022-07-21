@@ -7,8 +7,8 @@ export default function StockListToNegotiate() {
     setStockCode,
     stocksCode,
     setStockInfo,
-    setPurchasedStockSale,
-    setIsStocksCodeRenderedProvider,
+    setStockFinalPriceDecimal,
+    setIsStocksCodeRendered,
   } = useContext(stockContext);
 
   const listStocksCodes = ({ target: { value } }) => {
@@ -23,10 +23,10 @@ export default function StockListToNegotiate() {
   };
 
   const saveStockInfo = ({ target: { value } }) => {
-    setPurchasedStockSale(0);
+    setStockFinalPriceDecimal(0);
     const code = allStocks.filter((el) => el.stockCode === value);
     setStockInfo(code);
-    setIsStocksCodeRenderedProvider(false);
+    setIsStocksCodeRendered(false);
   };
 
   return (
