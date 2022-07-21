@@ -13,13 +13,13 @@ export default function StockList() {
   const {
     isStockMenuRendered,
     isPriceAndQuantityMissing,
-    IsPurchaseOrSaleDone,
+    isPurchaseOrSaleDone,
   } = useContext(stockContext);
   return (
     <>
       <Header />
       {
-          IsPurchaseOrSaleDone && isPriceAndQuantityMissing
+          isPurchaseOrSaleDone && isPriceAndQuantityMissing
         && (
         <Alert severity="error">
           <AlertTitle>Erro</AlertTitle>

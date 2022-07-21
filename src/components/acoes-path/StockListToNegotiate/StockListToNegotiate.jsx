@@ -12,7 +12,6 @@ export default function StockListToNegotiate() {
   } = useContext(stockContext);
 
   const listStocksCodes = ({ target: { value } }) => {
-    // setIsStocksCodeRendered(true);
     const code = allStocks.filter(({ stockCode }) => (
       stockCode.toLocaleLowerCase().includes(value.toLocaleLowerCase())));
     if (value === '') {

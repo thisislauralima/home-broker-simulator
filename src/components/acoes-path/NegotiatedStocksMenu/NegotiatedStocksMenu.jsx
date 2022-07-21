@@ -21,7 +21,6 @@ export default function NegotiatedStocksMenu() {
     setPaidPriceForStock,
     setIsPriceAndQuantityMissing,
     paidPriceForStock,
-    IsPurchaseOrSaleDone,
     setIsPurchaseOrSaleDone,
     isPriceAndQuantityMissing,
     setIsStocksCodeRendered,
@@ -70,6 +69,7 @@ export default function NegotiatedStocksMenu() {
       setIsPriceAndQuantityMissing(true);
       setIsPurchaseOrSaleDone(true);
     } else {
+      setIsPriceAndQuantityMissing(false);
       setIsPurchaseOrSaleDone(true);
     }
   };
@@ -87,7 +87,7 @@ export default function NegotiatedStocksMenu() {
       tabIndex={ 0 }
     >
       {
-        !isPriceAndQuantityMissing && IsPurchaseOrSaleDone && <EndPurchaseOrSale />
+        !isPriceAndQuantityMissing && <EndPurchaseOrSale />
       }
       {/* <div id="wrapper-container"> */}
       <header id="header-stock-section">
@@ -135,7 +135,7 @@ export default function NegotiatedStocksMenu() {
           <label htmlFor="shortMenuInput-3">
             Preço
             <input
-              step="any"
+              step="0.1"
               onClick={ savePaidPrice }
               className={ `${btnColor} short-menu-input` }
               min="0"

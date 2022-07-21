@@ -5,9 +5,10 @@ export default function EndPurchaseOrSale() {
   const {
     stockInfo,
     stockQuantity,
-    purchasedStockSale,
+    stockFinalPriceDecimal,
     paidPriceForStock,
   } = useContext(stockContext);
+
   return (
     <div>
       <h3>FINALIZAR OPERAÇÃO</h3>
@@ -20,7 +21,7 @@ export default function EndPurchaseOrSale() {
       <p>Quantidade</p>
       <p>{ stockQuantity }</p>
       <p>Valor investimento</p>
-      <p>{ purchasedStockSale }</p>
+      <p>{ stockFinalPriceDecimal }</p>
       <button type="button">ENVIAR</button>
     </div>
   );
