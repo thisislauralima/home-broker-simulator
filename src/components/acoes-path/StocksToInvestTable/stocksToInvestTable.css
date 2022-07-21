@@ -1,0 +1,65 @@
+#main-container-stocks {
+  border: 1px solid rgb(136,77,61);
+  width: fit-content;
+  margin-left: 0;
+}
+
+#all-stocks-table {
+  table-layout: fixed;
+  width: 600px;
+}
+
+td {
+  padding: 4px;
+  text-align: center;
+  box-sizing: border-box;
+  white-space: nowrap;
+} 
+
+table tr:nth-child(odd) td{
+  background-color: rgb(29,31,47);
+}
+
+table tr:nth-child(even) td{
+  background-color: rgb(36,37,56);
+}
+
+body {
+  color: white;
+}
+
+table tbody {
+  height: 250px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  display: block;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(29,31,47);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(64,68,84);
+  border-radius: 10px;
+  height: 2px;
+}
+
+#sale-btn {
+  background-color: rgb(228,75,100);
+}
+
+#pur-btn {
+  background-color: rgb(71,79,101);
+}
+
+.invest-btn {
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  color: rgb(254,237,200);
+}

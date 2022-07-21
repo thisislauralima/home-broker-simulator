@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Alert, AlertTitle } from '@mui/material';
-import StocksToInvest from '../../components/acoes-path/StocksToInvest/StocksToInvest';
+import StocksToInvestTable from '../../components/acoes-path/StocksToInvestTable/StocksToInvestTable';
 // import DepositOrWithdrawButton from
 // ../../components/DepositOrWithdrawButton/DepositOrWithdrawButton';
 import Header from '../../components/header/Header/Header';
@@ -30,7 +30,7 @@ export default function StockList() {
         )
       }
       <main id="page-main-container">
-        <StocksToInvest />
+        <StocksToInvestTable />
         {
           isStockMenuRendered && <NegotiatedStocksMenu />
         }
