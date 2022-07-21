@@ -5,9 +5,11 @@ import stockContext from '../../../context/stockContext';
 import './negotiatedStocksMenu.css';
 import allStocks from '../../../data/allStocks';
 import StockListToNegotiate from '../StockListToNegotiate/StockListToNegotiate';
+import EndPurchaseOrSale from '../EndPurchaseOrSale/EndPurchaseOrSale';
 
 export default function NegotiatedStocksMenu() {
   const [isStocksCodeRendered, setIsStocksCodeRendered] = useState(false);
+  const [isIsPurchaseOrSaleDone, setIsPurchaseOrSaleDone] = useState(false);
 
   const {
     stockInfo,
@@ -19,9 +21,11 @@ export default function NegotiatedStocksMenu() {
     setIsStockMenuRendered,
     isStocksCodeRenderedProvider,
     setIsStocksCodeRenderedProvider,
+    setStockCode,
   } = useContext(stockContext);
 
   const stockFinalPrice = ({ target: { value } }) => {
+    setStockCode([]);
     const stockPrice = allStocks.filter(
       (stock) => stock.id === stockInfo[0].id,
     ).map(({ price }) => price);
@@ -51,8 +55,28 @@ export default function NegotiatedStocksMenu() {
     setIsStocksCodeRendered(true);
   };
 
+  const closeStocksCodeList = (e) => {
+    if (e.key === 'Escape') {
+      setIsStocksCodeRenderedProvider(false);
+      setIsStocksCodeRendered(false);
+    }
+  };
+
+  const endOperation = () => {
+    setIsPurchaseOrSaleDone(true);
+  };
+
   return (
-    <section id="short-menu-section">
+    <section
+      role="button"
+      onClick={ () => {} }
+      onKeyUp={ closeStocksCodeList }
+      id="short-menu-section"
+      tabIndex={ 0 }
+    >
+      {
+        isIsPurchaseOrSaleDone && <EndPurchaseOrSale />
+      }
       {/* <div id="wrapper-container"> */}
       <header id="header-stock-section">
         <div>
@@ -85,7 +109,7 @@ export default function NegotiatedStocksMenu() {
             <input onClick={ renderStocksCode } className={ `${btnColor} short-menu-input` } />
             {
               isStocksCodeRenderedProvider
-              && isStocksCodeRendered && isStocksCodeRendered && <StockListToNegotiate />
+              && isStocksCodeRendered && <StockListToNegotiate />
             }
           </div>
           <label className="input-label-short-menu" htmlFor="shortMenuInput-2">
@@ -110,18 +134,18 @@ export default function NegotiatedStocksMenu() {
         <div>
           {
               stockInfo.length && stockInfo.map((el) => <div key={ el.id }>{el.name}</div>)
-            }
+          }
           {
               stockInfo.length && allStocks.filter(
                 (stock) => stock.id === stockInfo[0].id,
               ).map(({ price }) => <div key={ price }>{ price }</div>)
-            }
+          }
           <div>{ `Total: ${purchasedStockSale}` }</div>
         </div>
       </form>
       {/* -------------------------------------------------- */}
       <div id="send-order-btn-div">
-        <button id="send-order-btn" type="button">ENVIAR ORDEM</button>
+        <button onClick={ endOperation } id="send-order-btn" type="button">ENVIAR ORDEM</button>
       </div>
       {/* </div> */}
     </section>
