@@ -12,8 +12,8 @@ export default function NegotiatedStocksMenu() {
 
   const {
     stockInfo,
-    purchasedStockSale,
-    setPurchasedStockSale,
+    stockFinalPriceDecimal,
+    setStockFinalPriceDecimal,
     btnColor,
     setBtnColor,
     isStockMenuRendered,
@@ -38,7 +38,7 @@ export default function NegotiatedStocksMenu() {
 
     const finalStockPrice = stockPrice * Number(value);
     setStockQuantity(Number(value));
-    setPurchasedStockSale(finalStockPrice.toFixed(2));
+    setStockFinalPriceDecimal(finalStockPrice.toFixed(2));
   };
 
   const closeStockMenu = () => {
@@ -70,7 +70,7 @@ export default function NegotiatedStocksMenu() {
   };
 
   const endOperation = () => {
-    if (!purchasedStockSale || !paidPriceForStock) {
+    if (!stockFinalPriceDecimal || !paidPriceForStock) {
       setIsPriceAndQuantityMissing(true);
       setIsPurchaseOrSaleDone(true);
     } else {
@@ -158,7 +158,7 @@ export default function NegotiatedStocksMenu() {
               (stock) => stock.id === stockInfo[0].id,
             ).map(({ price }) => <div key={ price }>{ price }</div>)
           }
-          <div>{ `Total: ${purchasedStockSale}` }</div>
+          <div>{ `Total: ${stockFinalPriceDecimal}` }</div>
         </div>
       </form>
       {/* -------------------------------------------------- */}

@@ -3,47 +3,56 @@ import PropTypes from 'prop-types';
 import stockContext from './stockContext';
 
 export default function StocksProvider({ children }) {
-  const [stockInfo, setStockInfo] = useState([]);
+  const [accountBalance, setAccountBalance] = useState(1264.21);
+  const [btnColor, setBtnColor] = useState('');
+  const [isPriceAndQuantityMissing, setIsPriceAndQuantityMissing] = useState(true);
+  const [isPurchaseOrSaleDone, setIsPurchaseOrSaleDone] = useState(false);
+  const [isStocksCodeRenderedProvider, setIsStocksCodeRenderedProvider] = useState(false);
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const [isStockMenuRendered, setIsStockMenuRendered] = useState(false);
+  const [stocksCode, setStockCode] = useState([]);
+  const [stockInfo, setStockInfo] = useState([]);
+  const [stockQuantity, setStockQuantity] = useState(0);
+  const [stockFinalPriceDecimal, setStockFinalPriceDecimal] = useState(0);
   const [userId, setUserId] = useState('');
-  const [purchasedStockSale, setPurchasedStockSale] = useState(0);
   const [userInfo, setUserInfo] = useState({
     email: '', password: '', lastAcess: '',
   });
-  const [accountBalance, setAccountBalance] = useState(1264.21);
-  const [isStockMenuRendered, setIsStockMenuRendered] = useState(false);
-  const [btnColor, setBtnColor] = useState('');
-  const [stocksCode, setStockCode] = useState([]);
   const [userEmail, setUserEmail] = useState('');
-  const [isStocksCodeRenderedProvider, setIsStocksCodeRenderedProvider] = useState(false);
-  const [stockQuantity, setStockQuantity] = useState(0);
+  const [paidPriceForStock, setPaidPriceForStock] = useState(0);
 
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const values = {
-    userId,
-    setUserId,
-    stockInfo,
-    setStockInfo,
-    purchasedStockSale,
-    setPurchasedStockSale,
-    userInfo,
-    setUserInfo,
-    isUserLoggedIn,
-    setIsUserLoggedIn,
     accountBalance,
-    setAccountBalance,
-    isStockMenuRendered,
-    setIsStockMenuRendered,
     btnColor,
-    setBtnColor,
-    stocksCode,
-    setStockCode,
-    userEmail,
-    setUserEmail,
+    isPriceAndQuantityMissing,
+    isPurchaseOrSaleDone,
     isStocksCodeRenderedProvider,
-    setIsStocksCodeRenderedProvider,
+    isUserLoggedIn,
+    isStockMenuRendered,
+    stocksCode,
+    stockInfo,
+    stockFinalPriceDecimal,
     stockQuantity,
+    userId,
+    userInfo,
+    userEmail,
+    paidPriceForStock,
+    setAccountBalance,
+    setBtnColor,
+    setIsPriceAndQuantityMissing,
+    setIsPurchaseOrSaleDone,
+    setIsStocksCodeRenderedProvider,
+    setIsUserLoggedIn,
+    setIsStockMenuRendered,
+    setStockCode,
+    setStockInfo,
     setStockQuantity,
+    setStockFinalPriceDecimal,
+    setUserId,
+    setUserInfo,
+    setUserEmail,
+    setPaidPriceForStock,
   };
 
   return (
