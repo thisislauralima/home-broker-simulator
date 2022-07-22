@@ -8,9 +8,10 @@ export default function StocksToInvest() {
   const {
     setStockInfo,
     setIsStockMenuRendered,
-    setRestartStockMenuInputs,
+    setInputsValueStockMenu,
     setStockFinalPriceDecimal,
     setBtnColor,
+    // setPaidPriceForStock,
   } = useContext(stockContext);
 
   const paintBtns = ({ target }) => {
@@ -21,7 +22,8 @@ export default function StocksToInvest() {
     }
   };
   const saveStocksInfo = (e, id) => {
-    setRestartStockMenuInputs({ price: 0, quantity: 0 });
+    // setPaidPriceForStock(0);
+    setInputsValueStockMenu({ price: 0, quantity: 0 });
     setStockFinalPriceDecimal(0.00);
     paintBtns(e);
     const infos = allStocks.filter((stock) => stock.id === id).map((el) => el);
@@ -39,6 +41,7 @@ export default function StocksToInvest() {
                 <tr
                   key={ stock.id }
                 >
+                  <td width="200">{ stock.stockCode }</td>
                   <td width="200">{ stock.name }</td>
                   <td width="200">{ stock.quantity }</td>
                   <td width="200">{ stock.price }</td>
@@ -50,7 +53,7 @@ export default function StocksToInvest() {
                       id="pur-btn"
                       name="buy-btn"
                     >
-                      COMPRAR
+                      C
                     </button>
                     <button
                       onClick={ (e) => saveStocksInfo(e, stock.id) }
@@ -59,7 +62,7 @@ export default function StocksToInvest() {
                       id="sale-btn"
                       name="sale-btn"
                     >
-                      VENDER
+                      V
 
                     </button>
                   </td>
