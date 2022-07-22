@@ -21,8 +21,8 @@ export default function StocksProvider({ children }) {
   const [userEmail, setUserEmail] = useState('');
   const [paidPriceForStock, setPaidPriceForStock] = useState(0);
   const [restartStockMenuInputs, setRestartStockMenuInputs] = useState({
-    quantity: undefined,
-    price: undefined,
+    quantity: 0,
+    price: 0,
   });
 
   // eslint-disable-next-line react/jsx-no-constructed-context-values

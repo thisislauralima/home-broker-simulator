@@ -25,7 +25,6 @@ export default function LeftSideStockMenuForm() {
   };
 
   const stockFinalPrice = ({ target: { value } }) => {
-    setRestartStockMenuInputs({ quantity: undefined });
     setStockCode([]);
     const stockPrice = allStocks.filter(
       (stock) => stock.id === stockInfo[0].id,
@@ -37,8 +36,11 @@ export default function LeftSideStockMenuForm() {
   };
 
   const savePaidPrice = ({ target: { value } }) => {
-    setRestartStockMenuInputs({ price: undefined });
     setPaidPriceForStock(value);
+  };
+
+  const resetInputs = ({ target: { value } }) => {
+    setRestartStockMenuInputs(value);
   };
 
   return (
@@ -49,13 +51,14 @@ export default function LeftSideStockMenuForm() {
           <input onClick={ renderStocksCode } className={ `${btnColor} short-menu-input` } />
           {
               isStocksCodeRendered && <StockListToNegotiate />
-            }
+          }
         </div>
         <div className="input-div-short-menu" htmlFor="shortMenuInput-2">
           Quantidade
           <input
             value={ restartStockMenuInputs.quantity }
             onClick={ stockFinalPrice }
+            onChange={ resetInputs }
             className={ `${btnColor} short-menu-input` }
             min="0"
             max="100"
@@ -68,6 +71,7 @@ export default function LeftSideStockMenuForm() {
             value={ restartStockMenuInputs.price }
             step=".01"
             onClick={ savePaidPrice }
+            onChange={ resetInputs }
             className={ `${btnColor} short-menu-input` }
             min="0"
             type="number"
