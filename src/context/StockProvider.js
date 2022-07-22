@@ -12,7 +12,6 @@ export default function StocksProvider({ children }) {
   const [isStockMenuRendered, setIsStockMenuRendered] = useState(false);
   const [stocksCode, setStockCode] = useState([]);
   const [stockInfo, setStockInfo] = useState([]);
-  const [stockQuantity, setStockQuantity] = useState(0);
   const [stockFinalPriceDecimal, setStockFinalPriceDecimal] = useState(0);
   const [userId, setUserId] = useState('');
   const [userInfo, setUserInfo] = useState({
@@ -20,7 +19,7 @@ export default function StocksProvider({ children }) {
   });
   const [userEmail, setUserEmail] = useState('');
   const [paidPriceForStock, setPaidPriceForStock] = useState(0);
-  const [restartStockMenuInputs, setRestartStockMenuInputs] = useState({
+  const [inputsValueStockMenu, setInputsValueStockMenu] = useState({
     quantity: 0,
     price: 0,
   });
@@ -29,6 +28,7 @@ export default function StocksProvider({ children }) {
   const values = {
     accountBalance,
     btnColor,
+    inputsValueStockMenu,
     isPriceAndQuantityMissing,
     isPurchaseOrSaleDone,
     isUserLoggedIn,
@@ -37,12 +37,10 @@ export default function StocksProvider({ children }) {
     stocksCode,
     stockInfo,
     stockFinalPriceDecimal,
-    stockQuantity,
     userId,
     userInfo,
     userEmail,
     paidPriceForStock,
-    restartStockMenuInputs,
     setAccountBalance,
     setBtnColor,
     setIsPriceAndQuantityMissing,
@@ -52,13 +50,12 @@ export default function StocksProvider({ children }) {
     setIsStockMenuRendered,
     setStockCode,
     setStockInfo,
-    setStockQuantity,
     setStockFinalPriceDecimal,
     setUserId,
     setUserInfo,
     setUserEmail,
     setPaidPriceForStock,
-    setRestartStockMenuInputs,
+    setInputsValueStockMenu,
   };
 
   return (
