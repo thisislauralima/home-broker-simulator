@@ -1,77 +1,72 @@
-import React, { useContext } from 'react';
+// import React, { useContext, useEffect } from 'react';
+import React from 'react';
+
 import allStocks from '../../../data/allStocks';
-import stockContext from '../../../context/stockContext';
+// import stockContext from '../../../context/stockContext';
 import Header from './Header/Header';
 import './table.css';
 
 export default function Table() {
-  const {
-    setStockInfo,
-    setIsStockMenuRendered,
-    setInputValueQuantityStock,
-    setStockFinalPriceDecimal,
-    setBtnColor,
-    setInputValueStockCode,
-  } = useContext(stockContext);
-
-  const paintBtns = ({ target }) => {
-    if (target.name === 'sale-btn') {
-      setBtnColor('goGreen');
-    } else {
-      setBtnColor('goYellow');
-    }
-  };
-  const saveStocksInfo = (e, id) => {
-    setInputValueQuantityStock(0);
-    setStockFinalPriceDecimal(0.00);
-    paintBtns(e);
-    const infos = allStocks.filter((stock) => stock.id === id).map((el) => el);
-    setStockInfo(infos);
-    setIsStockMenuRendered(true);
-    setInputValueStockCode('');
-  };
+  // const {
+  //   setStockInfo,
+  //   setIsStockMenuRendered,
+  //   setInputValueQuantityStock,
+  //   setStockFinalPriceDecimal,
+  //   setBtnColor,
+  //   setInputValueStockCode,
+  // } = useContext(stockContext);
+  // const paintBtns = ({ target }) => {
+  //   if (target.name === 'sale-btn') {
+  //     setBtnColor('goGreen');
+  //   } else {
+  //     setBtnColor('goYellow');
+  //   }
+  // };
+  // const saveStocksInfo = (e, id) => {
+  //   setInputValueQuantityStock(0);
+  //   setStockFinalPriceDecimal(0.00);
+  //   paintBtns(e);
+  //   const infos = allStocks.filter((stock) => stock.id === id).map((el) => el);
+  //   setStockInfo(infos);
+  //   setIsStockMenuRendered(true);
+  //   setInputValueStockCode('');
+  // };
 
   return (
-    <section>
+  // <div className="overflow-y-auto max-h-96">
+    <table className="w-2/4">
       <Header />
-      <table id="all-stocks-table" cellSpacing="0">
-        <tbody>
+      <div className="overflow-y-scroll h-[380px] w-[400px]">
+        <tbody className="h-3/6">
           {
-              allStocks.map((stock) => (
-                <tr
-                  key={ stock.id }
+          allStocks.map((stock) => (
+            <tr className="min-w-[100px]" key={ stock.stockCode }>
+              <td className="p-3 w-2/6 text-center text-sm">{ stock.name }</td>
+              <td className="p-3 w-2/6 text-center text-sm">{ stock.quantity }</td>
+              <td className="p-3 w-2/6 text-center text-sm">{ stock.price }</td>
+              <td className="w-fit flex p-3 text-center text-sm">
+                <button
+                  className="w-5 h-fit rounded-lg bg-my-custom-pink-lighter hover:bg-my-custom-pink-darker"
+                  type="button"
                 >
-                  <td width="200">{ stock.stockCode }</td>
-                  <td width="200">{ stock.name }</td>
-                  <td width="200">{ stock.quantity }</td>
-                  <td width="200">{ stock.price }</td>
-                  <td width="200">
-                    <button
-                      onClick={ (e) => saveStocksInfo(e, stock.id) }
-                      className="invest-btn"
-                      type="button"
-                      id="pur-btn"
-                      name="buy-btn"
-                    >
-                      C
-                    </button>
-                    <button
-                      onClick={ (e) => saveStocksInfo(e, stock.id) }
-                      className="invest-btn"
-                      type="button"
-                      id="sale-btn"
-                      name="sale-btn"
-                      disabled
-                    >
-                      V
+                  C
 
-                    </button>
-                  </td>
-                </tr>
-              ))
-            }
+                </button>
+                <button
+                  className="w-5 h-fit rounded-lg bg-my-custom-purple-darker"
+                  type="button"
+                  disabled
+                >
+                  V
+
+                </button>
+              </td>
+            </tr>
+          ))
+        }
         </tbody>
-      </table>
-    </section>
+      </div>
+    </table>
+  // </div>
   );
 }

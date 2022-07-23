@@ -1,25 +1,16 @@
 import React from 'react';
-import tableInfo from '../../../../data/tableHeader';
-import './header.css';
 
-export default function StocksToInvestHeader() {
+export default function Header() {
   return (
-    <div id="main-table-header">
-      <div id="main-table-title">
-        <div>Ações para investir:</div>
-        <button id="main-table-x-btn" type="button">X</button>
-      </div>
-      <table id="main-table-of-header">
-        <thead>
-          <tr>
-            {
-              tableInfo.map((info) => (
-                <th width="200" className="t-headers" key={ info }>{ info }</th>
-              ))
-            }
-          </tr>
-        </thead>
-      </table>
+    <div className="w-[400px]">
+      <thead>
+        <tr>
+          <th className="p-3 w-2/6 tracking-wide text-center">Ação</th>
+          <th className="p-3 w-2/6 tracking-wide text-center">Quantidade</th>
+          <th className="p-3 w-2/6 tracking-wide text-center">Valor</th>
+          <th className="p-3 w-2/6 tracking-wide text-left">Negociar</th>
+        </tr>
+      </thead>
     </div>
   );
 }
