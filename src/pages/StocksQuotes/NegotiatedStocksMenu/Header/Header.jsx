@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import './headerStockMenu.css';
 import stockContext from '../../../../context/stockContext';
+import './header.css';
 
-export default function HeaderStockMenu() {
+export default function Header() {
   const {
     btnColor,
     setBtnColor,

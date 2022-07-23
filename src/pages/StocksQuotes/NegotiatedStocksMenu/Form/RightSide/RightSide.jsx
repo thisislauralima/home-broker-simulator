@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import stockContext from '../../../../../context/stockContext';
 import allStocks from '../../../../../data/allStocks';
 
-export default function RightSideStockMenuForm() {
+export default function RightSide() {
   const {
     stockInfo,
     stockFinalPriceDecimal,
@@ -16,7 +16,7 @@ export default function RightSideStockMenuForm() {
       {
         stockInfo.length && allStocks.filter(
           (stock) => stock.id === stockInfo[0].id,
-        ).map(({ price }) => <div key={ price }>{ price }</div>)
+        ).map(({ price }) => <div key={ price }>{ `Valor do ativo: ${price}` }</div>)
       }
       <div>{ `Total: ${stockFinalPriceDecimal}` }</div>
     </div>

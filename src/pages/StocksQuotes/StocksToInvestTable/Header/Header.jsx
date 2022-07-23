@@ -1,6 +1,6 @@
 import React from 'react';
 import tableInfo from '../../../../data/tableHeader';
-import './stocksToInvestHeader.css';
+import './header.css';
 
 export default function StocksToInvestHeader() {
   return (

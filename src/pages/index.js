@@ -1,15 +1,15 @@
 import Login from './Login/Login';
-import StockList from './StockList/StockList';
-import StockBuyOrSale from './StockBuyOrSale/StockBuyOrSale';
+import stocksQuotes from './StocksQuotes/StocksQuotes';
 import DepositOrWithdraw from './DepositOrWithdraw/DepositOrWithdraw';
 import NotFound from './NotFound/NotFound';
+import PersonalStocks from './PersonalStocks/PersonalStocks';
 
 const pages = {
   Login,
-  StockList,
+  stocksQuotes,
   NotFound,
-  StockBuyOrSale,
   DepositOrWithdraw,
+  PersonalStocks,
 };
 
 export default pages;

@@ -1,17 +1,17 @@
 import React, { useContext } from 'react';
 import allStocks from '../../../data/allStocks';
 import stockContext from '../../../context/stockContext';
-import './stocksToInvestTable.css';
-import StocksToInvestHeader from './StocksToInvestHeader/StocksToInvestHeader';
+import Header from './Header/Header';
+import './table.css';
 
-export default function StocksToInvest() {
+export default function Table() {
   const {
     setStockInfo,
     setIsStockMenuRendered,
-    setInputsValueStockMenu,
+    setInputValueQuantityStock,
     setStockFinalPriceDecimal,
     setBtnColor,
-    // setPaidPriceForStock,
+    setInputValueStockCode,
   } = useContext(stockContext);
 
   const paintBtns = ({ target }) => {
@@ -22,18 +22,18 @@ export default function StocksToInvest() {
     }
   };
   const saveStocksInfo = (e, id) => {
-    // setPaidPriceForStock(0);
-    setInputsValueStockMenu({ price: 0, quantity: 0 });
+    setInputValueQuantityStock(0);
     setStockFinalPriceDecimal(0.00);
     paintBtns(e);
     const infos = allStocks.filter((stock) => stock.id === id).map((el) => el);
     setStockInfo(infos);
     setIsStockMenuRendered(true);
+    setInputValueStockCode('');
   };
 
   return (
     <section>
-      <StocksToInvestHeader />
+      <Header />
       <table id="all-stocks-table" cellSpacing="0">
         <tbody>
           {
@@ -61,6 +61,7 @@ export default function StocksToInvest() {
                       type="button"
                       id="sale-btn"
                       name="sale-btn"
+                      disabled
                     >
                       V
 

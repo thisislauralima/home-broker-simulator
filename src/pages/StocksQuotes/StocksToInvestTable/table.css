@@ -17,11 +17,11 @@ td {
 } 
 
 table tr:nth-child(odd) td{
-  background-color: rgb(29,31,47);
+  background-color: rgb(29,31,48)
 }
 
 table tr:nth-child(even) td{
-  background-color: rgb(36,37,56);
+  background-color: rgb(33,37,55)
 }
 
 body {
@@ -50,15 +50,16 @@ table tbody {
 }
 
 #sale-btn {
-  background-color: rgb(228,75,100);
+  background-color: rgb(160,222,188);
+  color: rgb(11,13,20);
 }
 
 #pur-btn {
+  cursor: pointer;
   background-color: rgb(71,79,101);
 }
 
 .invest-btn {
-  cursor: pointer;
   border: none;
   border-radius: 10px;
   color: rgb(254,237,200);
