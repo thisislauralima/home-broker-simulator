@@ -22,6 +22,12 @@ export default function Login() {
   const checkPassword = userInfo.password.length >= PASSWORD_MIN_LENGTH;
 
   useEffect(() => {
+    if (localStorage.getItem('isUserLoggedIn')) {
+      history.push('/acoes');
+    }
+  });
+
+  useEffect(() => {
     // localStorage.setItem('userInfo', JSON.stringify(userInfo));
     if (isEmailCorrect && checkPassword) {
       setIsBtnDisabled(false);
