@@ -16,25 +16,18 @@ export default function Login() {
   const history = useHistory();
 
   const [isBtnDisabled, setIsBtnDisabled] = useState(true);
-  const [btnColor, setBtnColor] = useState('bg-my-custom-orange-ligher');
+  const [btnColor, setBtnColor] = useState('bg-my-custom-orange-lighter');
 
   const isEmailCorrect = EMAIL_REGEX.test(userInfo.email);
   const checkPassword = userInfo.password.length >= PASSWORD_MIN_LENGTH;
 
   useEffect(() => {
-    if (localStorage.getItem('isUserLoggedIn')) {
-      history.push('/acoes');
-    }
-  });
-
-  useEffect(() => {
-    // localStorage.setItem('userInfo', JSON.stringify(userInfo));
     if (isEmailCorrect && checkPassword) {
       setIsBtnDisabled(false);
-      setBtnColor('bg-my-custom-orgen-darker');
+      setBtnColor('bg-my-custom-orange-darker');
     } else {
       setIsBtnDisabled(true);
-      setBtnColor('bg-my-custom-orange-ligher');
+      setBtnColor('bg-my-custom-orange-lighter');
     }
   }, [setIsBtnDisabled, userInfo.email, userInfo.password]);
 
@@ -43,7 +36,6 @@ export default function Login() {
       ...prevState,
       lastAcess: new Date(),
     }));
-    localStorage.setItem('isUserLoggedIn', true);
   };
 
   const validateFormFields = () => {

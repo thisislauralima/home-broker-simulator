@@ -1,22 +1,19 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useEffect, useContext } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../../images/rico.png';
 import './header.css';
 import stockContext from '../../context/stockContext';
 
 export default function Header() {
   const { setErrorMessage } = useContext(stockContext);
-  const history = useHistory();
-
-  useEffect(() => {
-    if (!JSON.parse(localStorage.getItem('userInfo'))) {
-      history.push('/login');
-    }
-  });
 
   const cleanErrorMessage = () => {
     setErrorMessage('');
+  };
+
+  const logoutUser = () => {
+    localStorage.setItem('userInfo', '');
   };
 
   return (
@@ -40,9 +37,9 @@ export default function Header() {
           </svg>
         </button>
         <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabIndex="-1">
-          <div className="py-1" role="none">
-            <Link className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" id="menu-item-1">Depósito/ retirada</Link>
-            <Link className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" id="menu-item-2">Sair</Link>
+          <div className="py-1">
+            <Link to="/acoes/transacoes" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" id="menu-item-1">Depósito/ retirada</Link>
+            <Link onClick={ logoutUser } to="/login" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" id="menu-item-2">Sair</Link>
           </div>
         </div>
       </div>
