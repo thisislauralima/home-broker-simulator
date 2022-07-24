@@ -1,7 +1,0 @@
-.short-menu-input {
-  grid-column: span 2;
-  display: grid;
-  grid: inherit;
-  grid-template-columns: subgrid;
-  gap: inherit;
-}
