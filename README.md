@@ -34,3 +34,10 @@ Inicie a aplicação
 ```
 npm start
 ```
+
+## Acesso ao deploy
+
+https://home-broker-simulator-jf2dumj45-thisislauralima.vercel.app/login.
+
+## Linkedin para contato:
+https://www.linkedin.com/in/laura-lima-santos/
