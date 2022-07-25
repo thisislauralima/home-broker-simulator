@@ -1,12 +1,13 @@
 /* eslint-disable consistent-return */
 import React, { useContext, useEffect } from 'react';
 import StocksToInvestTable from './StocksToInvestTable/Table';
-import Header from '../../components/Header/Header/Header';
+import Header from '../../components/Header/Header';
 import NegotiatedStocks from './NegotiatedStocksMenu/NegotiatedStocks';
 import stockContext from '../../context/stockContext';
 import Alert from '../../components/Alert/Alert';
 import EndPurchaseOrSale from './NegotiatedStocksMenu/EndPurchaseOrSale/EndPurchaseOrSale';
-import './stocksQuotes.css';
+import DoneOperation from './DoneOperation';
+import allStocks from '../../data/allStocks';
 
 export default function stocksQuotes() {
   const {
@@ -15,6 +16,7 @@ export default function stocksQuotes() {
     errorMessage,
     isPurchaseDone,
     setAccountBalance,
+    isMainTableRendered,
   } = useContext(stockContext);
 
   useEffect(() => {
@@ -29,18 +31,28 @@ export default function stocksQuotes() {
     <>
       <Header />
       {
-        isPurchaseDone && <div id="purchase-made">Compra efetuada!</div>
+        errorMessage && <Alert message={ errorMessage } />
       }
       {
-        errorMessage && <Alert message={ errorMessage } />
+        isPurchaseDone
+        && <DoneOperation />
       }
       {
         isEndPurchaseOrSaleRendered && <EndPurchaseOrSale />
       }
-      <main id="page-main-container">
-        <StocksToInvestTable />
+      <main className="mt-10 max-w-4xl mx-4">
         {
           isStockMenuRendered && <NegotiatedStocks />
+        }
+        {
+          isMainTableRendered && (
+          <StocksToInvestTable
+            arrayToRender={ allStocks }
+            isBtnDisabled
+            keys={ ['stockCode', 'name', 'quantity', 'price', 'id'] }
+            tableHeigth="overflow-y-scroll h-[380px] w-full"
+          />
+          )
         }
       </main>
     </>
