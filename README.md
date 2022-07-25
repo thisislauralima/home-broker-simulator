@@ -1,6 +1,8 @@
 # Home Broker Simulator App 📈
 
-O app tem como objetivo simular a compra e venda de ações.
+Boas-vindas ao Home Broker Simulator App!
+
+Desenvolvi esse projeto que tem como objetivo simular a compra e venda de ações.
 
 ## Tecnologias utilizadas
 
@@ -11,6 +13,9 @@ O app tem como objetivo simular a compra e venda de ações.
   <img height="20px" width="80px" src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" />
   <img height="20px" width="80px" src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" />
 <div>
+
+## Link para notion - resumo de como foi o desenvolvimento
+https://scalloped-trust-3a1.notion.site/Projeto-XP-Laura-Lima-332f396a18e84f3391d5160d8d91558b
 
 ## Como rodar o projeto na sua máquina:
 
