@@ -14,7 +14,7 @@ Desenvolvi esse projeto que tem como objetivo simular a compra e venda de açõe
   <img height="20px" width="80px" src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" />
 <div>
 
-![Screenshot_20220724-223411](https://user-images.githubusercontent.com/93014175/180681239-1c2ff95f-45ec-451d-af0c-77dd1e4c94db.png) { width: 200px; }
+![Screenshot_20220724-223411](https://user-images.githubusercontent.com/93014175/180681239-1c2ff95f-45ec-451d-af0c-77dd1e4c94db.png) { height: 200px; }
 
 
 ## Link para notion - resumo de como foi o desenvolvimento
