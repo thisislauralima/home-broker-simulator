@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import stockContext from '../../context/stockContext';
 import tableInfo from '../../data/tableHeader';
 import allStocks from '../../data/allStocks';
-// import ShortStockMenu from '../ShortStockMenu/ShortStockMenu';
+// import NegotiatedStocksMenu from '../NegotiatedStocksMenu/NegotiatedStocksMenu';
 
 export default function StockPurchaseOrSale() {
   const {

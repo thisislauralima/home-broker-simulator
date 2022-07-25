@@ -1,61 +1,88 @@
-// import React, { useContext, useEffect } from 'react';
-import React from 'react';
-
+import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import allStocks from '../../../data/allStocks';
-// import stockContext from '../../../context/stockContext';
+import stockContext from '../../../context/stockContext';
 import Header from './Header/Header';
 import './table.css';
 
-export default function Table() {
-  // const {
-  //   setStockInfo,
-  //   setIsStockMenuRendered,
-  //   setInputValueQuantityStock,
-  //   setStockFinalPriceDecimal,
-  //   setBtnColor,
-  //   setInputValueStockCode,
-  // } = useContext(stockContext);
-  // const paintBtns = ({ target }) => {
-  //   if (target.name === 'sale-btn') {
-  //     setBtnColor('goGreen');
-  //   } else {
-  //     setBtnColor('goYellow');
-  //   }
-  // };
-  // const saveStocksInfo = (e, id) => {
-  //   setInputValueQuantityStock(0);
-  //   setStockFinalPriceDecimal(0.00);
-  //   paintBtns(e);
-  //   const infos = allStocks.filter((stock) => stock.id === id).map((el) => el);
-  //   setStockInfo(infos);
-  //   setIsStockMenuRendered(true);
-  //   setInputValueStockCode('');
-  // };
+export default function Table({
+  arrayToRender, isBtnDisabled, keys, tableHeigth,
+  isPersonalTable,
+}) {
+  const {
+    setStockInfo,
+    setIsStockMenuRendered,
+    setInputValueQuantityStock,
+    setStockFinalPriceDecimal,
+    setBtnColor,
+    setInputValueStockCode,
+    setIsMainTableRendered,
+    setIsPersonalMenuOpened,
+    setIsPersonalTableOpened,
+  } = useContext(stockContext);
+
+  const paintBtns = ({ target }) => {
+    if (target.name === 'sale-btn') {
+      setBtnColor('my-custom-green');
+    } else {
+      setBtnColor('my-custom-yellow');
+    }
+  };
+
+  const saveInfoForPersonalStocks = (e, id) => {
+    paintBtns(e);
+    const infos = allStocks.filter((stock) => stock.id === id).map((el) => el);
+    setStockInfo(infos);
+    setIsPersonalTableOpened(false);
+    setIsPersonalMenuOpened(true);
+  };
+
+  const saveStocksInfo = (e, id) => {
+    if (isPersonalTable) {
+      saveInfoForPersonalStocks(e, id);
+      return;
+    }
+    setInputValueQuantityStock(0);
+    setStockFinalPriceDecimal(0.00);
+    paintBtns(e);
+    const infos = allStocks.filter((stock) => stock.id === id).map((el) => el);
+    setStockInfo(infos);
+    setIsMainTableRendered(false);
+    setIsStockMenuRendered(true);
+    setInputValueStockCode('');
+  };
+
+  const allowStockSale = (e, id) => {
+    if (!isBtnDisabled) saveInfoForPersonalStocks(e, id);
+  };
 
   return (
-  // <div className="overflow-y-auto max-h-96">
-    <table className="w-2/4">
+    <table className="min-w-[300px] border-2 border-my-custom-gray w-full">
       <Header />
-      <div className="overflow-y-scroll h-[380px] w-[400px]">
-        <tbody className="h-3/6">
+      <div className={ tableHeigth }>
+        <tbody>
           {
-          allStocks.map((stock) => (
-            <tr className="min-w-[100px]" key={ stock.stockCode }>
-              <td className="p-3 w-2/6 text-center text-sm">{ stock.name }</td>
-              <td className="p-3 w-2/6 text-center text-sm">{ stock.quantity }</td>
-              <td className="p-3 w-2/6 text-center text-sm">{ stock.price }</td>
-              <td className="w-fit flex p-3 text-center text-sm">
+          // eslint-disable-next-line array-callback-return
+          arrayToRender.map((stock) => (
+            <tr className="h-2.5 min-w-[100px]" key={ stock[keys[0]] }>
+              <td className="p-3 w-2/6 text-center text-base">{ stock[keys[1]] }</td>
+              <td className="p-3 w-2/6 text-center text-base">{ stock[keys[2]] }</td>
+              <td className="p-3 w-2/6 text-center text-base">{ stock[keys[3]] }</td>
+              <td className="flex p-3 w-fit text-base">
                 <button
-                  className="w-5 h-fit rounded-lg bg-my-custom-pink-lighter hover:bg-my-custom-pink-darker"
+                  className="p-3 text-center h-full rounded-lg bg-my-custom-pink-lighter hover:bg-my-custom-pink-darker"
                   type="button"
+                  onClick={ (e) => saveStocksInfo(e, stock[keys[4]]) }
                 >
                   C
 
                 </button>
                 <button
-                  className="w-5 h-fit rounded-lg bg-my-custom-purple-darker"
+                  className="p-3 h-full rounded-lg bg-my-custom-purple-darker"
                   type="button"
-                  disabled
+                  name="sale-btn"
+                  disabled={ isBtnDisabled }
+                  onClick={ (e) => allowStockSale(e, stock[keys[4]]) }
                 >
                   V
 
@@ -67,6 +94,14 @@ export default function Table() {
         </tbody>
       </div>
     </table>
-  // </div>
   );
 }
+
+Table.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  arrayToRender: PropTypes.any,
+  isBtnDisabled: PropTypes.bool,
+  keys: PropTypes.any,
+  tableHeigth: PropTypes.string,
+  isPersonalTable: PropTypes.string,
+}.isRequired;
