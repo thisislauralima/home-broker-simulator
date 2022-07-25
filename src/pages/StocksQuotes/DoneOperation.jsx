@@ -5,13 +5,11 @@ import stockContext from '../../context/stockContext';
 export default function DoneOperation() {
   const {
     setIsPurchaseDone,
-    boughtStocks,
     setIsMainTableRendered,
   } = useContext(stockContext);
 
   const savePurchasedStocks = () => {
     setIsPurchaseDone(false);
-    window.localStorage.setItem('boughtStocks', JSON.stringify(boughtStocks));
     setIsMainTableRendered(true);
   };
 
