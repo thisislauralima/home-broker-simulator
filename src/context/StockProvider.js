@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import stockContext from './stockContext';
 
 export default function StocksProvider({ children }) {
-  const [accountBalance, setAccountBalance] = useState(1264.21);
+  const [accountBalance, setAccountBalance] = useState(0);
+  const [boughtStocks, setBoughtStocks] = useState([]);
   const [btnColor, setBtnColor] = useState('');
-  const [isPriceAndQuantityMissing, setIsPriceAndQuantityMissing] = useState(true);
-  const [isPurchaseOrSaleDone, setIsPurchaseOrSaleDone] = useState(false);
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const [btnColorDarker, setBtnColorDarker] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [isPurchaseDone, setIsPurchaseDone] = useState(false);
   const [isStocksCodeRendered, setIsStocksCodeRendered] = useState(false);
   const [isStockMenuRendered, setIsStockMenuRendered] = useState(false);
   const [stocksCode, setStockCode] = useState([]);
@@ -18,20 +19,33 @@ export default function StocksProvider({ children }) {
     email: '', password: '', lastAcess: '',
   });
   const [userEmail, setUserEmail] = useState('');
-  const [paidPriceForStock, setPaidPriceForStock] = useState(0);
-  const [inputsValueStockMenu, setInputsValueStockMenu] = useState({
-    quantity: 0,
-    price: 0,
-  });
+  const [inputValueQuantityStock, setInputValueQuantityStock] = useState(0);
+  const [inputValueStockCode, setInputValueStockCode] = useState('');
+  const [isDropBoxClicked, setIsDropBoxClicked] = useState(false);
+  const [isEndPurchaseOrSaleRendered, setIsEndPurchaseOrSaleRendered] = useState(false);
+  const [isAskToInvest, setIsAskToInvest] = useState(true);
+  const [isMainTableRendered, setIsMainTableRendered] = useState(true);
+  const [isPersonalMenuOpened, setIsPersonalMenuOpened] = useState(false);
+  const [isPersonalTableOpened, setIsPersonalTableOpened] = useState(false);
+  const [isSaleBtnDisabled, setIsSaleBtnDisabled] = useState(true);
 
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const values = {
     accountBalance,
     btnColor,
-    inputsValueStockMenu,
-    isPriceAndQuantityMissing,
-    isPurchaseOrSaleDone,
-    isUserLoggedIn,
+    btnColorDarker,
+    boughtStocks,
+    errorMessage,
+    isAskToInvest,
+    inputValueQuantityStock,
+    inputValueStockCode,
+    isDropBoxClicked,
+    isMainTableRendered,
+    isPersonalMenuOpened,
+    isPersonalTableOpened,
+    isPurchaseDone,
+    isEndPurchaseOrSaleRendered,
+    isSaleBtnDisabled,
     isStocksCodeRendered,
     isStockMenuRendered,
     stocksCode,
@@ -40,12 +54,21 @@ export default function StocksProvider({ children }) {
     userId,
     userInfo,
     userEmail,
-    paidPriceForStock,
     setAccountBalance,
+    setBoughtStocks,
     setBtnColor,
-    setIsPriceAndQuantityMissing,
-    setIsPurchaseOrSaleDone,
-    setIsUserLoggedIn,
+    setBtnColorDarker,
+    setErrorMessage,
+    setIsPersonalMenuOpened,
+    setInputValueQuantityStock,
+    setInputValueStockCode,
+    setIsAskToInvest,
+    setIsDropBoxClicked,
+    setIsMainTableRendered,
+    setIsPersonalTableOpened,
+    setIsPurchaseDone,
+    setIsEndPurchaseOrSaleRendered,
+    setIsSaleBtnDisabled,
     setIsStocksCodeRendered,
     setIsStockMenuRendered,
     setStockCode,
@@ -54,8 +77,6 @@ export default function StocksProvider({ children }) {
     setUserId,
     setUserInfo,
     setUserEmail,
-    setPaidPriceForStock,
-    setInputsValueStockMenu,
   };
 
   return (
