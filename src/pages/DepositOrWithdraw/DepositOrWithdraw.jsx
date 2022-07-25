@@ -2,11 +2,12 @@ import React, { useState, useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import stockContext from '../../context/stockContext';
 import Alert from '../../components/Alert/Alert';
-import Header from '../../components/header/Header/Header';
+import Header from '../../components/Header/Header';
 
 export default function DepositOrWithdraw() {
   const [provAccountBalance, setProvAccountBalance] = useState(0);
   const [inputValue, setInputValue] = useState(0);
+
   const {
     accountBalance,
     setAccountBalance,
@@ -21,22 +22,11 @@ export default function DepositOrWithdraw() {
     const parserAccValue = JSON.parse(accValue);
     if (parserAccValue) {
       setAccountBalance(parserAccValue);
-      return;
     }
-    setAccountBalance(0);
   }, []);
 
   useEffect(() => {
-    const accValue = localStorage.getItem('accountBalance');
-    const parseAccValue = JSON.parse(accValue);
-    if (!accountBalance) {
-      if (parseAccValue) {
-        setAccountBalance(parseAccValue);
-        return;
-      }
-    }
-    localStorage.setItem('accountBalance', accountBalance);
-    setAccountBalance(parseAccValue);
+    window.localStorage.setItem('accountBalance', accountBalance);
   }, [accountBalance]);
 
   const goToStockListPage = () => {
@@ -71,26 +61,51 @@ export default function DepositOrWithdraw() {
     }
     setErrorMessage('');
     setAccountBalance((prevState) => prevState - provAccountBalance);
-    // window.localStorage.setItem('accountBalance', JSON.stringify(accountBalance));
   };
 
   return (
     <>
       <Header />
-      <main>
-        <h2>Saldo em conta</h2>
-        {
+      {
         errorMessage && <Alert message={ errorMessage } />
       }
-        <p>{ accountBalance }</p>
-        <p>Limite máximo a ser depositado: R$10.000.</p>
-        <button disabled={ !inputValue } onClick={ sumValue } type="button">Depósito</button>
-        <button disabled={ !inputValue } onClick={ discountValue } type="button">Retirada</button>
-        <div>
-          <input value={ inputValue } onChange={ getValue } type="number" placeholder="Informe o valor" />
-        </div>
-        <button onClick={ goToStockListPage } type="button">Voltar</button>
-      </main>
+      <div className="display flex justify-center">
+        <main className="bg-end-operation-gray-darker rounded text-black w-fit p-10 mt-10 text-center">
+          <div className="flex my-3.5 justify-center">
+            <h2 className="mr-1">Saldo em conta:</h2>
+            <p className="font-extrabold">{ `R$${accountBalance.toFixed(2)}` }</p>
+          </div>
+          <div className="flex justify-around my-3.5">
+            <button
+              className="bg-my-custom-blue text-white p-2 rounded"
+              disabled={ !inputValue }
+              onClick={ sumValue }
+              type="button"
+            >
+              Depósito
+
+            </button>
+            <button
+              className="bg-my-custom-blue text-white p-2 rounded"
+              disabled={ !inputValue }
+              onClick={ discountValue }
+              type="button"
+            >
+              Retirada
+
+            </button>
+          </div>
+          <div className="flex justify-center my-3.5">
+            <input className="text-center rounded" value={ inputValue } onChange={ getValue } type="number" placeholder="Informe o valor" />
+          </div>
+          <div className="my-3.5">
+            <p>Limite máximo a ser depositado: R$10.000.</p>
+          </div>
+          <div className="cursor-pointer mt-2 p-3 rounded bg-my-custom-blue text-white flex justify-center">
+            <button onClick={ goToStockListPage } type="button">Voltar</button>
+          </div>
+        </main>
+      </div>
     </>
   );
 }
