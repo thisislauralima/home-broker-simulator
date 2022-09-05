@@ -22,7 +22,7 @@ export default function PersonalStocks() {
 
   useEffect(() => {
     setIsSaleBtnDisabled(false);
-    if (!JSON.parse(localStorage.getItem('boughtStocks').length)) {
+    if (!JSON.parse(localStorage.getItem('boughtStocks'))) {
       setIsAskToInvest(true);
       setIsPersonalTableOpened(false);
       return;

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import allStocks from '../../../data/allStocks';
 import stockContext from '../../../context/stockContext';
 import Header from './Header/Header';
+import AskToInvest from '../../PersonalStocks/AskToInvest';
 import './table.css';
 
 export default function Table({
@@ -63,7 +64,7 @@ export default function Table({
         <tbody>
           {
           // eslint-disable-next-line array-callback-return
-          arrayToRender.map((stock) => (
+          arrayToRender !== null ? arrayToRender.map((stock) => (
             <tr className="h-2.5 min-w-[100px]" key={ stock[keys[0]] }>
               <td className="p-3 w-2/6 text-center text-base">{ stock[keys[1]] }</td>
               <td className="p-3 w-2/6 text-center text-base">{ stock[keys[2]] }</td>
@@ -90,6 +91,7 @@ export default function Table({
               </td>
             </tr>
           ))
+            : <AskToInvest />
         }
         </tbody>
       </div>
