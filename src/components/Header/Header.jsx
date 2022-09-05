@@ -1,10 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import logo from '../../images/rico.png';
 import stockContext from '../../context/stockContext';
 
 export default function Header() {
+  const history = useHistory();
   const {
     setErrorMessage,
     setIsDropBoxClicked,
@@ -45,7 +46,7 @@ export default function Header() {
   return (
     <header className="m-0 flex items-center justify-between text-base h-14 w-full bg-purple-header">
       <div className="flex items-center justify-between">
-        <img className="h-14 w-24" src={ logo } alt="logo" />
+        <button onClick={ () => history.push('/acoes') } type="button" className="h-14 w-24"><img src={ logo } alt="logo" /></button>
         <Link className="mx-4" onClick={ handleRenderizationsCotacoes } to="/acoes/">Cotações</Link>
         <Link onClick={ handleRenderizationsCarteira } to="/acoes/carteira">Carteira</Link>
       </div>
