@@ -7,7 +7,7 @@ import AskToInvest from '../../PersonalStocks/AskToInvest';
 import './table.css';
 
 export default function Table({
-  arrayToRender, isBtnDisabled, keys, tableHeigth,
+  arrayToRender, isBtnDisabled, tableHeigth,
   isPersonalTable,
 }) {
   const {
@@ -65,15 +65,15 @@ export default function Table({
           {
           // eslint-disable-next-line array-callback-return
           arrayToRender !== null ? arrayToRender.map((stock) => (
-            <tr className="h-2.5 min-w-[100px]" key={ stock[keys[0]] }>
-              <td className="p-3 w-2/6 text-center text-base">{ stock[keys[1]] }</td>
-              <td className="p-3 w-2/6 text-center text-base">{ stock[keys[2]] }</td>
-              <td className="p-3 w-2/6 text-center text-base">{ stock[keys[3]] }</td>
+            <tr className="h-2.5 min-w-[100px]" key={ stock.id }>
+              <td className="p-3 w-2/6 text-center text-base">{ stock.name }</td>
+              <td className="p-3 w-2/6 text-center text-base">{ stock.quantity }</td>
+              <td className="p-3 w-2/6 text-center text-base">{ stock.price }</td>
               <td className="flex p-3 w-fit text-base">
                 <button
                   className="p-3 text-center h-full rounded-lg bg-my-custom-pink-lighter hover:bg-my-custom-pink-darker"
                   type="button"
-                  onClick={ (e) => saveStocksInfo(e, stock[keys[4]]) }
+                  onClick={ (e) => saveStocksInfo(e, stock.id) }
                 >
                   C
 
@@ -83,7 +83,7 @@ export default function Table({
                   type="button"
                   name="sale-btn"
                   disabled={ isBtnDisabled }
-                  onClick={ (e) => allowStockSale(e, stock[keys[4]]) }
+                  onClick={ (e) => allowStockSale(e, stock.id) }
                 >
                   V
 
@@ -103,7 +103,6 @@ Table.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   arrayToRender: PropTypes.any,
   isBtnDisabled: PropTypes.bool,
-  keys: PropTypes.any,
   tableHeigth: PropTypes.string,
   isPersonalTable: PropTypes.string,
 }.isRequired;

@@ -4,7 +4,7 @@ import stockContext from '../../context/stockContext';
 import StocksToInvestTable from '../StocksQuotes/StocksToInvestTable/Table';
 import NegotiatedStocks from '../StocksQuotes/NegotiatedStocksMenu/NegotiatedStocks';
 import AskToInvest from './AskToInvest';
-import EndPurchaseOrSale from '../StocksQuotes/NegotiatedStocksMenu/EndPurchaseOrSale/EndPurchaseOrSale';
+import EndPurchaseOrSale from '../StocksQuotes/NegotiatedStocksMenu/EndPurchaseOrSale';
 import Alert from '../../components/Alert/Alert';
 
 export default function PersonalStocks() {
@@ -42,15 +42,9 @@ export default function PersonalStocks() {
   return (
     <>
       <Header />
-      {
-        errorMessage && <Alert message={ errorMessage } />
-      }
-      {
-        isAskToInvest && <AskToInvest />
-      }
-      {
-        isEndPurchaseOrSaleRendered && <EndPurchaseOrSale />
-      }
+      { errorMessage && <Alert message={ errorMessage } /> }
+      { isAskToInvest && <AskToInvest /> }
+      { isEndPurchaseOrSaleRendered && <EndPurchaseOrSale />}
       {
         isPersonalTableOpened
         && (
@@ -58,7 +52,6 @@ export default function PersonalStocks() {
             <StocksToInvestTable
               arrayToRender={ JSON.parse(localStorage.getItem('boughtStocks')) }
               isBtnDisabled={ false }
-              keys={ ['id', 'stockName', 'quantity', 'price', 'stockId'] }
               tableHeigth="h-[380px] w-full h-fit"
               isPersonalTable="true"
             />

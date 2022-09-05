@@ -1,9 +1,8 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useContext, useEffect } from 'react';
 import stockContext from '../../../../../context/stockContext';
-import StockListToNegotiate from './LeftSide/StockListToNegotiate';
-import BottomSection from '../BottomSection/BottomSection';
-import './leftSide.css';
+import StockListToNegotiate from './StockListToNegotiate';
+import BottomSection from '../BottomSection';
 
 export default function LeftSide() {
   const {

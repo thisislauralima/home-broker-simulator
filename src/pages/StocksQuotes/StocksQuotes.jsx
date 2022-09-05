@@ -5,7 +5,7 @@ import Header from '../../components/Header/Header';
 import NegotiatedStocks from './NegotiatedStocksMenu/NegotiatedStocks';
 import stockContext from '../../context/stockContext';
 import Alert from '../../components/Alert/Alert';
-import EndPurchaseOrSale from './NegotiatedStocksMenu/EndPurchaseOrSale/EndPurchaseOrSale';
+import EndPurchaseOrSale from './NegotiatedStocksMenu/EndPurchaseOrSale';
 import DoneOperation from './DoneOperation';
 import allStocks from '../../data/allStocks';
 
@@ -49,7 +49,6 @@ export default function stocksQuotes() {
           <StocksToInvestTable
             arrayToRender={ allStocks }
             isBtnDisabled
-            keys={ ['stockCode', 'name', 'quantity', 'price', 'id'] }
             tableHeigth="overflow-y-scroll h-[380px] w-full"
           />
           )

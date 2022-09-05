@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import stockContext from '../../../../../context/stockContext';
-import allStocks from '../../../../../data/allStocks';
+import stockContext from '../../../../context/stockContext';
+import allStocks from '../../../../data/allStocks';
 
 export default function BottomSection() {
   const {
