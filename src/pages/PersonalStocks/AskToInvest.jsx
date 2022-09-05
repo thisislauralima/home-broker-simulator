@@ -6,7 +6,17 @@ export default function AskToInvest() {
     <main className="flex h-screen flex-col items-center justify-center">
       <p>Você ainda não possui investimentos.</p>
       <p>Que tal dar uma olhada nas nossas cotações?</p>
-      <Link to="/acoes">Clique aqui para conferir!</Link>
+      <div className="flex">
+        <p className="mr-1">Clique</p>
+        <Link
+          to="/acoes"
+          className="mr-1 cursor-pointer underline text-my-custom-orange-darker"
+        >
+          aqui
+
+        </Link>
+        <p>para conferir!</p>
+      </div>
     </main>
   );
 }
