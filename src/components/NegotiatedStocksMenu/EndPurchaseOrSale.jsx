@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 // import { v4 as uuidv4 } from 'uuid';
-import stockContext from '../../../context/stockContext';
-import closeIcon from '../../../images/close-icon.png';
+import stockContext from '../../context/stockContext';
+import closeIcon from '../../images/close-icon.png';
 
 export default function EndPurchaseOrSale() {
   const {

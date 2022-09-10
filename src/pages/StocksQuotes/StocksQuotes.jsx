@@ -2,10 +2,10 @@
 import React, { useContext, useEffect } from 'react';
 import StocksToInvestTable from './StocksToInvestTable/Table';
 import Header from '../../components/Header/Header';
-import NegotiatedStocks from './NegotiatedStocksMenu/NegotiatedStocks';
+import NegotiatedStocks from '../../components/NegotiatedStocksMenu/NegotiatedStocks';
 import stockContext from '../../context/stockContext';
 import Alert from '../../components/Alert/Alert';
-import EndPurchaseOrSale from './NegotiatedStocksMenu/EndPurchaseOrSale';
+import EndPurchaseOrSale from '../../components/NegotiatedStocksMenu/EndPurchaseOrSale';
 import DoneOperation from './DoneOperation';
 import allStocks from '../../data/allStocks';
 

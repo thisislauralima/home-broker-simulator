@@ -24,9 +24,9 @@ export default function Table({
 
   const paintBtns = ({ target }) => {
     if (target.name === 'sale-btn') {
-      setBtnColor('my-custom-green');
+      setBtnColor({ lighter: 'boleta-lighter-green', darker: 'boleta-darker-green' });
     } else {
-      setBtnColor('my-custom-yellow');
+      setBtnColor({ lighter: 'boleta-lighter-yellow', darker: 'boleta-darker-yellow' });
     }
   };
 
@@ -63,7 +63,6 @@ export default function Table({
       <div className={ tableHeigth }>
         <tbody>
           {
-          // eslint-disable-next-line array-callback-return
           arrayToRender !== null ? arrayToRender.map((stock) => (
             <tr className="h-2.5 min-w-[100px]" key={ stock.id }>
               <td className="p-3 w-2/6 text-center text-base">{ stock.name }</td>

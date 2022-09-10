@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useContext, useEffect } from 'react';
-import stockContext from '../../../../../context/stockContext';
+import stockContext from '../../../../context/stockContext';
 import StockListToNegotiate from './StockListToNegotiate';
 import BottomSection from '../BottomSection';
 
@@ -12,7 +12,6 @@ export default function LeftSide() {
     inputValueQuantityStock,
     stockInfo,
   } = useContext(stockContext);
-
   const calcStockFinalPrice = () => {
     const finalStockPrice = Number(inputValueQuantityStock) * stockInfo[0].price;
     setStockFinalPriceDecimal(finalStockPrice.toFixed(2));
@@ -27,7 +26,11 @@ export default function LeftSide() {
   };
 
   return (
-    <form className={ `py-4 min-w-[300px] ${btnColor}` } id="form-stock-menu">
+    <form
+      className={ `py-4 min-w-[300px] ${btnColor.lighter === 'boleta-lighter-yellow'
+        ? 'bg-boleta-lighter-yellow' : 'bg-boleta-lighter-green'}` }
+      id="form-stock-menu"
+    >
       <div>
         <div className="mx-10 min-w-[300px]">
           <StockListToNegotiate />

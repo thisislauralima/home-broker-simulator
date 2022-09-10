@@ -2,9 +2,9 @@ import React, { useContext, useEffect } from 'react';
 import Header from '../../components/Header/Header';
 import stockContext from '../../context/stockContext';
 import StocksToInvestTable from '../StocksQuotes/StocksToInvestTable/Table';
-import NegotiatedStocks from '../StocksQuotes/NegotiatedStocksMenu/NegotiatedStocks';
+import NegotiatedStocks from '../../components/NegotiatedStocksMenu/NegotiatedStocks';
 import AskToInvest from './AskToInvest';
-import EndPurchaseOrSale from '../StocksQuotes/NegotiatedStocksMenu/EndPurchaseOrSale';
+import EndPurchaseOrSale from '../../components/NegotiatedStocksMenu/EndPurchaseOrSale';
 import Alert from '../../components/Alert/Alert';
 
 export default function PersonalStocks() {

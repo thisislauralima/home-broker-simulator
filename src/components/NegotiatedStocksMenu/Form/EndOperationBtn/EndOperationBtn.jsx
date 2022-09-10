@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import stockContext from '../../../../../context/stockContext';
+import stockContext from '../../../../context/stockContext';
 import './endOperationBtn.css';
 
 export default function EndOperationBtn({ isPersonalMenu }) {
@@ -115,10 +115,10 @@ export default function EndOperationBtn({ isPersonalMenu }) {
   };
 
   const validatePersonaleTransactions = () => {
-    if (btnColor === 'my-custom-green') {
+    if (btnColor.lighter === 'boleta-lighter-green') {
       validateStockSale();
       return;
-    } if (btnColor === 'my-custom-yellow') {
+    } if (btnColor.lighter === 'boleta-lighter-yellow') {
       validatePersonalPurchase();
     }
   };

@@ -1,8 +1,8 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import stockContext from '../../../../context/stockContext';
+import stockContext from '../../../context/stockContext';
 import './header.css';
-import closeIcon from '../../../../images/close-icon.png';
+import closeIcon from '../../../images/close-icon.png';
 
 export default function Header({ isSaleBtnDisabledProp, isPersonalMenu, isPersonalTable }) {
   const {
@@ -16,22 +16,13 @@ export default function Header({ isSaleBtnDisabledProp, isPersonalMenu, isPerson
     setIsPersonalMenuOpened,
     setIsPersonalTableOpened,
     isSaleBtnDisabled,
-    setBtnColorDarker,
   } = useContext(stockContext);
-
-  useEffect(() => {
-    if (btnColor === 'my-custom-yellow') {
-      setBtnColorDarker('boleta-darker-yellow');
-    } else {
-      setBtnColorDarker('boleta-darker-green');
-    }
-  }, [btnColor]);
 
   const paintBtns = ({ target }) => {
     if (target.name === 'sale-btn') {
-      setBtnColor('my-custom-green');
+      setBtnColor({ lighter: 'boleta-lighter-green', darker: 'boleta-darker-green' });
     } else {
-      setBtnColor('my-custom-yellow');
+      setBtnColor({ lighter: 'boleta-lighter-yellow', darker: 'boleta-darker-yellow' });
     }
   };
 
@@ -87,7 +78,8 @@ export default function Header({ isSaleBtnDisabledProp, isPersonalMenu, isPerson
       </div>
       <button
         onClick={ paintBtns }
-        className={ `font-extrabold mb-0 ${btnColor} py-2 saleOrPurchaseBtn p-10  rounded-t-lg` }
+        className={ `font-extrabold mb-0 ${btnColor.darker === 'boleta-darker-yellow'
+          ? 'bg-boleta-darker-yellow text-boleta-form-gray' : 'bg-buy-or-sale-stock-btns'} py-2 saleOrPurchaseBtn p-10  rounded-t-lg` }
         type="button"
         name="buy-btn"
       >
@@ -97,7 +89,8 @@ export default function Header({ isSaleBtnDisabledProp, isPersonalMenu, isPerson
         onClick={ paintBtns }
         name="sale-btn"
         type="button"
-        className={ `${btnColor} font-extrabold mb-0 py-2 p-10 rounded-t-lg m-2` }
+        className={ `${btnColor.darker === 'boleta-darker-green'
+          ? 'bg-boleta-darker-green text-boleta-form-gray' : 'bg-buy-or-sale-stock-btns'} font-extrabold mb-0 py-2 p-10 rounded-t-lg m-2` }
         disabled={ isSaleBtnDisabled || isSaleBtnDisabledProp }
       >
         Venda
