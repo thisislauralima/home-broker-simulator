@@ -16,7 +16,6 @@ export default function Header({ isPersonalMenu, isPersonalTable }) {
     setIsPersonalMenuOpened,
     setIsPersonalTableOpened,
   } = useContext(stockContext);
-
   const paintBtns = ({ target }) => {
     if (target.name === 'sale-btn') {
       setBtnColor({ lighter: 'boleta-lighter-green', darker: 'boleta-darker-green' });
@@ -90,7 +89,7 @@ export default function Header({ isPersonalMenu, isPersonalTable }) {
         type="button"
         className={ `${btnColor.darker === 'boleta-darker-green'
           ? 'bg-boleta-darker-green text-boleta-form-gray' : 'bg-buy-or-sale-stock-btns'} font-extrabold mb-0 py-2 p-10 rounded-t-lg m-2` }
-        disabled={ !JSON.parse(localStorage.getItem('boughtStocks')).map((el) => el.stockCode.includes(stockInfo[0].stockCode)) }
+        disabled={ !JSON.parse(localStorage.getItem('boughtStocks')).map((el) => el.stockCode.includes(stockInfo[0].stockCode))[0] }
       >
         Venda
       </button>
