@@ -6,10 +6,6 @@ table tr:nth-child(even) td{
   background-color: rgb(33,37,55)
 }
 
-body {
-  color: white;
-}
-
 ::-webkit-scrollbar {
   width: 6px;
 }

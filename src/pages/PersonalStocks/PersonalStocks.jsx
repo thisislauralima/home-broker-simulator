@@ -51,7 +51,6 @@ export default function PersonalStocks() {
           <main className="mt-10 max-w-4xl mx-4">
             <StocksToInvestTable
               arrayToRender={ JSON.parse(localStorage.getItem('boughtStocks')) }
-              isBtnDisabled={ false }
               tableHeigth="h-[380px] w-full h-fit"
               isPersonalTable="true"
             />
@@ -60,11 +59,12 @@ export default function PersonalStocks() {
       }
       {
         isPersonalMenuOpened && (
-        <NegotiatedStocks
-          isPersonalTable="true"
-          isPersonalMenu="true"
-          isSaleBtnDisabledProp={ false }
-        />
+          <div className="mx-4">
+            <NegotiatedStocks
+              isPersonalTable="true"
+              isPersonalMenu="true"
+            />
+          </div>
         )
       }
     </>

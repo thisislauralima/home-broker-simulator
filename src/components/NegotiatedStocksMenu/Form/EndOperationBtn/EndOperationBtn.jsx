@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import stockContext from '../../../../context/stockContext';
-import './endOperationBtn.css';
 
 export default function EndOperationBtn({ isPersonalMenu }) {
   const {
@@ -140,8 +139,8 @@ export default function EndOperationBtn({ isPersonalMenu }) {
   };
 
   return (
-    <div id="send-order-btn-div">
-      <button onClick={ endOperation } id="send-order-btn" type="button">Enviar ordem</button>
+    <div className="flex justify-center mt-5">
+      <button onClick={ endOperation } className={ `${btnColor.darker === 'boleta-darker-yellow' ? 'bg-boleta-darker-yellow' : 'bg-boleta-darker-green'} p-2 rounded-md ` } type="button">Enviar ordem</button>
     </div>
   );
 }

@@ -14,6 +14,7 @@ module.exports = {
         'my-custom-pink-lighter': 'rgb(226,77,99)',
         'my-custom-pink-darker': 'rgb(197,71,91)',
         'my-custom-purple-darker': 'rgb(57,70,138)',
+        'unclickable-sale-btn': 'rgb(81, 88, 124)',
         'purple-header': 'rgb(35,38,99)',
         'my-costum-white': 'rgb(248,206,173)',
         'my-custom-gray': 'rgb(63,67,84)',
@@ -33,6 +34,7 @@ module.exports = {
         'green-operation-done': 'rgb(73,154,121)',
         'stock-purchase-or-buy-bg': 'rgb(29,31,48)',
         'buy-or-sale-stock-btns': 'rgb(44,52,65)',
+        'send-order-btn': 'rgb(250,166,27)',
       },
       screens: {
         'sm-mobiles-s': '300px',

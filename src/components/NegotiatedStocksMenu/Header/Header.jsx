@@ -4,7 +4,7 @@ import stockContext from '../../../context/stockContext';
 import './header.css';
 import closeIcon from '../../../images/close-icon.png';
 
-export default function Header({ isSaleBtnDisabledProp, isPersonalMenu, isPersonalTable }) {
+export default function Header({ isPersonalMenu, isPersonalTable }) {
   const {
     btnColor,
     setBtnColor,
@@ -15,7 +15,6 @@ export default function Header({ isSaleBtnDisabledProp, isPersonalMenu, isPerson
     isPersonalMenuOpened,
     setIsPersonalMenuOpened,
     setIsPersonalTableOpened,
-    isSaleBtnDisabled,
   } = useContext(stockContext);
 
   const paintBtns = ({ target }) => {
@@ -91,7 +90,7 @@ export default function Header({ isSaleBtnDisabledProp, isPersonalMenu, isPerson
         type="button"
         className={ `${btnColor.darker === 'boleta-darker-green'
           ? 'bg-boleta-darker-green text-boleta-form-gray' : 'bg-buy-or-sale-stock-btns'} font-extrabold mb-0 py-2 p-10 rounded-t-lg m-2` }
-        disabled={ isSaleBtnDisabled || isSaleBtnDisabledProp }
+        disabled={ !JSON.parse(localStorage.getItem('boughtStocks')).map((el) => el.stockCode.includes(stockInfo[0].stockCode)) }
       >
         Venda
       </button>
@@ -100,7 +99,6 @@ export default function Header({ isSaleBtnDisabledProp, isPersonalMenu, isPerson
 }
 
 Header.propTypes = {
-  isSaleBtnDisabledProp: PropTypes.bool,
   isPersonalMenu: PropTypes.string,
   isPersonalTable: PropTypes.string,
 }.isRequired;

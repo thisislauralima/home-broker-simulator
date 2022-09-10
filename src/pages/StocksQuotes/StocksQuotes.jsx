@@ -30,25 +30,18 @@ export default function stocksQuotes() {
   return (
     <>
       <Header />
-      {
-        errorMessage && <Alert message={ errorMessage } />
-      }
+      { errorMessage && <Alert message={ errorMessage } /> }
       {
         isPurchaseDone
         && <DoneOperation />
       }
-      {
-        isEndPurchaseOrSaleRendered && <EndPurchaseOrSale />
-      }
+      { isEndPurchaseOrSaleRendered && <EndPurchaseOrSale /> }
       <main className="mt-10 max-w-4xl mx-4">
-        {
-          isStockMenuRendered && <NegotiatedStocks />
-        }
+        { isStockMenuRendered && <NegotiatedStocks /> }
         {
           isMainTableRendered && (
           <StocksToInvestTable
             arrayToRender={ allStocks }
-            isBtnDisabled
             tableHeigth="overflow-y-scroll h-[380px] w-full"
           />
           )
