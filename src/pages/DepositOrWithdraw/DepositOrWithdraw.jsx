@@ -41,12 +41,12 @@ export default function DepositOrWithdraw() {
 
   const sumValue = async () => {
     setInputValue(0);
-    if (!Number(accountBalance)) {
-      setAccountBalance(0 + provAccountBalance);
-      return;
-    }
     if (provAccountBalance > 10000) {
       setErrorMessage('O valor máximo a ser depositado é R$10.000');
+      return;
+    }
+    if (!Number(accountBalance)) {
+      setAccountBalance(0 + provAccountBalance);
       return;
     }
     setErrorMessage('');
@@ -77,7 +77,7 @@ export default function DepositOrWithdraw() {
           </div>
           <div className="flex justify-around my-3.5">
             <button
-              className="bg-my-custom-blue text-white p-2 rounded"
+              className="cursor-pointer bg-my-custom-blue text-white p-2 rounded"
               disabled={ !inputValue }
               onClick={ sumValue }
               type="button"
@@ -86,7 +86,7 @@ export default function DepositOrWithdraw() {
 
             </button>
             <button
-              className="bg-my-custom-blue text-white p-2 rounded"
+              className="cursor-pointer bg-my-custom-blue text-white p-2 rounded"
               disabled={ !inputValue }
               onClick={ discountValue }
               type="button"

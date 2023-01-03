@@ -1,10 +1,9 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import stockContext from '../../../context/stockContext';
+import stockContext from '../../context/stockContext';
 import FormHeader from './Header/Header';
 import FormLeftSide from './Form/LeftSideMenuForm/LeftSide';
 import FormEndOperationBtn from './Form/EndOperationBtn/EndOperationBtn';
-// import './negotiatedStocks.css';
 
 export default function NegotiatedStocks({ isSaleBtnDisabled, isPersonalMenu }) {
   const {

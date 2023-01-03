@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import stockContext from '../../../../../context/stockContext';
-import allStocks from '../../../../../data/allStocks';
+import stockContext from '../../../context/stockContext';
+import allStocks from '../../../data/allStocks';
 
 export default function BottomSection() {
   const {
@@ -10,7 +10,10 @@ export default function BottomSection() {
   } = useContext(stockContext);
 
   return (
-    <div className={ `text-boleta-form-gray flex justify-around w-full mt-3.5 pb-0 bg-${btnColor}` }>
+    <div className={ `text-boleta-form-gray flex
+      justify-around w-full mt-3.5 pb-0 ${btnColor.darker === 'boleta-darker-yellow'
+      ? 'bg-boleta-darker-yellow' : 'bg-boleta-darker-green'}` }
+    >
       {
         stockInfo.length && allStocks.filter(
           (stock) => stock.id === stockInfo[0].id,

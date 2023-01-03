@@ -5,8 +5,7 @@ import stockContext from './stockContext';
 export default function StocksProvider({ children }) {
   const [accountBalance, setAccountBalance] = useState(0);
   const [boughtStocks, setBoughtStocks] = useState([]);
-  const [btnColor, setBtnColor] = useState('');
-  const [btnColorDarker, setBtnColorDarker] = useState('');
+  const [btnColor, setBtnColor] = useState({ lighter: '', darker: '' });
   const [errorMessage, setErrorMessage] = useState('');
   const [isPurchaseDone, setIsPurchaseDone] = useState(false);
   const [isStocksCodeRendered, setIsStocksCodeRendered] = useState(false);
@@ -33,7 +32,6 @@ export default function StocksProvider({ children }) {
   const values = {
     accountBalance,
     btnColor,
-    btnColorDarker,
     boughtStocks,
     errorMessage,
     isAskToInvest,
@@ -57,7 +55,6 @@ export default function StocksProvider({ children }) {
     setAccountBalance,
     setBoughtStocks,
     setBtnColor,
-    setBtnColorDarker,
     setErrorMessage,
     setIsPersonalMenuOpened,
     setInputValueQuantityStock,

@@ -2,9 +2,9 @@ import React, { useContext, useEffect } from 'react';
 import Header from '../../components/Header/Header';
 import stockContext from '../../context/stockContext';
 import StocksToInvestTable from '../StocksQuotes/StocksToInvestTable/Table';
-import NegotiatedStocks from '../StocksQuotes/NegotiatedStocksMenu/NegotiatedStocks';
+import NegotiatedStocks from '../../components/NegotiatedStocksMenu/NegotiatedStocks';
 import AskToInvest from './AskToInvest';
-import EndPurchaseOrSale from '../StocksQuotes/NegotiatedStocksMenu/EndPurchaseOrSale/EndPurchaseOrSale';
+import EndPurchaseOrSale from '../../components/NegotiatedStocksMenu/EndPurchaseOrSale';
 import Alert from '../../components/Alert/Alert';
 
 export default function PersonalStocks() {
@@ -22,7 +22,7 @@ export default function PersonalStocks() {
 
   useEffect(() => {
     setIsSaleBtnDisabled(false);
-    if (!JSON.parse(localStorage.getItem('boughtStocks').length)) {
+    if (!JSON.parse(localStorage.getItem('boughtStocks'))) {
       setIsAskToInvest(true);
       setIsPersonalTableOpened(false);
       return;
@@ -42,23 +42,15 @@ export default function PersonalStocks() {
   return (
     <>
       <Header />
-      {
-        errorMessage && <Alert message={ errorMessage } />
-      }
-      {
-        isAskToInvest && <AskToInvest />
-      }
-      {
-        isEndPurchaseOrSaleRendered && <EndPurchaseOrSale />
-      }
+      { errorMessage && <Alert message={ errorMessage } /> }
+      { isAskToInvest && <AskToInvest /> }
+      { isEndPurchaseOrSaleRendered && <EndPurchaseOrSale />}
       {
         isPersonalTableOpened
         && (
           <main className="mt-10 max-w-4xl mx-4">
             <StocksToInvestTable
               arrayToRender={ JSON.parse(localStorage.getItem('boughtStocks')) }
-              isBtnDisabled={ false }
-              keys={ ['id', 'stockName', 'quantity', 'price', 'stockId'] }
               tableHeigth="h-[380px] w-full h-fit"
               isPersonalTable="true"
             />
@@ -67,11 +59,12 @@ export default function PersonalStocks() {
       }
       {
         isPersonalMenuOpened && (
-        <NegotiatedStocks
-          isPersonalTable="true"
-          isPersonalMenu="true"
-          isSaleBtnDisabledProp={ false }
-        />
+          <div className="mx-4">
+            <NegotiatedStocks
+              isPersonalTable="true"
+              isPersonalMenu="true"
+            />
+          </div>
         )
       }
     </>

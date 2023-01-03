@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import stockContext from '../../../../../context/stockContext';
-import './endOperationBtn.css';
+import stockContext from '../../../../context/stockContext';
 
 export default function EndOperationBtn({ isPersonalMenu }) {
   const {
@@ -25,7 +24,7 @@ export default function EndOperationBtn({ isPersonalMenu }) {
       setErrorMessage('Insira o código do ativo.');
       return false;
     }
-    return 'tudo certo';
+    return true;
   };
 
   const validateStockQuantity = () => {
@@ -39,7 +38,7 @@ export default function EndOperationBtn({ isPersonalMenu }) {
       setErrorMessage('A quantidade do lote inserida não pode ser superior a disponível.');
       return false;
     }
-    return 'tudo certo';
+    return true;
   };
 
   const updateAccountBalance = () => {
@@ -52,7 +51,7 @@ export default function EndOperationBtn({ isPersonalMenu }) {
       setErrorMessage('O saldo da conta é inferior a quantidade solicitada.');
       return false;
     }
-    return 'tudo certo';
+    return true;
   };
 
   const validateQuantityAtSale = () => {
@@ -62,7 +61,7 @@ export default function EndOperationBtn({ isPersonalMenu }) {
       setErrorMessage('Não é permitido vender uma quantia além da comprada.');
       return false;
     }
-    return 'tudo certo';
+    return true;
   };
 
   const checkIfStockIsBought = () => {
@@ -71,7 +70,7 @@ export default function EndOperationBtn({ isPersonalMenu }) {
       setErrorMessage('O código da ação inserido não está na sua carteira.');
       return false;
     }
-    return 'tudo certo';
+    return true;
   };
 
   const validateQuantityInputAtSale = () => {
@@ -82,7 +81,7 @@ export default function EndOperationBtn({ isPersonalMenu }) {
       setErrorMessage('A quantidade de ação não é múltipla de lote.');
       return false;
     }
-    return 'tudo certo';
+    return true;
   };
 
   const removeSoldStock = () => {
@@ -90,10 +89,10 @@ export default function EndOperationBtn({ isPersonalMenu }) {
       stock.stockName !== stockInfo[0].name));
   };
   const validateStockSale = () => {
-    if (validateQuantityAtSale() === 'tudo certo'
-    && validateStockCodeInput() === 'tudo certo'
-    && validateQuantityInputAtSale() === 'tudo certo'
-    && checkIfStockIsBought() === 'tudo certo') {
+    if (validateQuantityAtSale()
+    && validateStockCodeInput()
+    && validateQuantityInputAtSale()
+    && checkIfStockIsBought()) {
       setErrorMessage('');
       setIsPersonalTableOpened(false);
       setIsPersonalMenuOpened(false);
@@ -103,9 +102,9 @@ export default function EndOperationBtn({ isPersonalMenu }) {
   };
 
   const validatePersonalPurchase = () => {
-    if (validateStockQuantity() === 'tudo certo'
-    && validateStockCodeInput() === 'tudo certo'
-    && validateAccountBalance() === 'tudo certo') {
+    if (validateStockQuantity()
+    && validateStockCodeInput()
+    && validateAccountBalance()) {
       setErrorMessage('');
       updateAccountBalance();
       setIsPersonalTableOpened(false);
@@ -115,10 +114,10 @@ export default function EndOperationBtn({ isPersonalMenu }) {
   };
 
   const validatePersonaleTransactions = () => {
-    if (btnColor === 'my-custom-green') {
+    if (btnColor.lighter === 'boleta-lighter-green') {
       validateStockSale();
       return;
-    } if (btnColor === 'my-custom-yellow') {
+    } if (btnColor.lighter === 'boleta-lighter-yellow') {
       validatePersonalPurchase();
     }
   };
@@ -128,9 +127,9 @@ export default function EndOperationBtn({ isPersonalMenu }) {
       validatePersonaleTransactions();
       return;
     }
-    if (validateStockCodeInput() === 'tudo certo'
-      && validateStockQuantity() === 'tudo certo'
-      && validateAccountBalance() === 'tudo certo') {
+    if (validateStockCodeInput()
+      && validateStockQuantity()
+      && validateAccountBalance()) {
       setErrorMessage('');
       setIsEndPurchaseOrSaleRendered(true);
       setIsStockMenuRendered(false);
@@ -140,8 +139,8 @@ export default function EndOperationBtn({ isPersonalMenu }) {
   };
 
   return (
-    <div id="send-order-btn-div">
-      <button onClick={ endOperation } id="send-order-btn" type="button">Enviar ordem</button>
+    <div className="flex justify-center mt-5">
+      <button onClick={ endOperation } className={ `${btnColor.darker === 'boleta-darker-yellow' ? 'bg-boleta-darker-yellow' : 'bg-boleta-darker-green'} p-2 rounded-md ` } type="button">Enviar ordem</button>
     </div>
   );
 }
