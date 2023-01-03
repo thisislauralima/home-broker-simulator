@@ -19,7 +19,6 @@ export default function Alert({ message }) {
         <button className="w-5" onClick={ closeError } type="button">
           <img src={ closeIcon } alt="close-error-msg" />
         </button>
-
       </div>
       <p>{ message }</p>
     </div>
